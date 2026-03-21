@@ -376,6 +376,35 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+@media (min-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--glass-border);
+    transition: var(--transition-smooth);
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.profile-img:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+}
+
 .about-text p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
