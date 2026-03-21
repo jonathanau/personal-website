@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Au | Product & Engineering</title>
+    <meta name="description"
+        content="Personal portfolio of Jonathan Au, featuring projects in software engineering, product management, and machine learning.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">JA<span>.</span></a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="https://www.linkedin.com/in/jonathanau/" target="_blank" rel="noopener noreferrer"
+                    class="nav-btn">LinkedIn <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="https://www.linkedin.com/in/jonathanau/" target="_blank" rel="noopener noreferrer"
+            class="mobile-link">LinkedIn</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content reveal">
+            <div class="hero-badge">Welcome to my portfolio</div>
+            <h1 class="hero-title">
+                Hi, I'm <span class="text-gradient">Jonathan Au</span>.
+            </h1>
+            <p class="hero-subtitle">
+                I build products at the intersection of engineering, design, and machine learning.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View My Work <i class="ph ph-arrow-down"></i></a>
+                <a href="#about" class="btn btn-secondary">More About Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <h2 class="section-title reveal"><span>01.</span> About Me</h2>
+            <div class="about-grid reveal">
+                <div class="about-text glass-card">
+                    <p>I am a multifaceted professional with a passion for building impactful software and AI-driven
+                        products.</p>
+                    <p>My work spans across full-stack engineering, machine learning research, and product management. I
+                        thrive in environments where I can leverage my technical depth to define strategy, architect
+                        scalable solutions, and deliver exceptional user experiences.</p>
+                    <p>Currently, I am exploring the frontiers of recommender systems and AI developer tools, creating
+                        open-source projects that bridge the gap between complex algorithms and practical applications.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Product Management</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Full-Stack Dev</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-container">
+            <h2 class="section-title reveal"><span>02.</span> Selected Projects</h2>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card glass-card reveal">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-category">Machine Learning / AI</span>
+                            <div class="project-links">
+                                <a href="https://github.com/jonathanau/two-tower-video-recsys" target="_blank"
+                                    rel="noopener noreferrer" aria-label="GitHub Repository"><i
+                                        class="ph ph-github-logo"></i></a>
+                                <a href="https://github.com/jonathanau/two-tower-video-recsys" target="_blank"
+                                    rel="noopener noreferrer" aria-label="External Link"><i
+                                        class="ph ph-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Two-Tower Video Recommender</h3>
+                        <p class="project-description">
+                            A minimalist, research-oriented PyTorch implementation of a two-tower retrieval model for
+                            video recommendations. Features sequential user modeling via Transformer encoders, MovieLens
+                            genre embeddings, and ANN retrieval using HNSW for fast top-k recommendation.
+                        </p>
+                        <ul class="project-tech">
+                            <li>PyTorch</li>
+                            <li>Transformers</li>
+                            <li>HNSW</li>
+                            <li>MovieLens</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card glass-card reveal" style="transition-delay: 100ms;">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-category">Developer Tools / AI</span>
+                            <div class="project-links">
+                                <a href="https://github.com/jonathanau/pm-project-brain" target="_blank"
+                                    rel="noopener noreferrer" aria-label="GitHub Repository"><i
+                                        class="ph ph-github-logo"></i></a>
+                                <a href="https://github.com/jonathanau/pm-project-brain" target="_blank"
+                                    rel="noopener noreferrer" aria-label="External Link"><i
+                                        class="ph ph-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">PM Project Brain</h3>
+                        <p class="project-description">
+                            An open-source, reusable prompt framework that helps product managers establish a persistent
+                            "project brain" for AI coding assistants. Streamlines context loading across tools like
+                            Claude, Copilot, Cursor, and Antigravity.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Prompt Engineering</li>
+                            <li>Product Strategy</li>
+                            <li>Developer Setup</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card glass-card reveal" style="transition-delay: 200ms;">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-category">Web Application</span>
+                            <div class="project-links">
+                                <a href="https://thesnakegame.onrender.com/" target="_blank" rel="noopener noreferrer"
+                                    aria-label="External Link"><i class="ph ph-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Mobile-Optimized Snake</h3>
+                        <p class="project-description">
+                            A fully responsive, touch-friendly modern implementation of the classic Snake game.
+                            Engineered specifically for seamless play on mobile devices as well as desktop browsers with
+                            an intuitive control scheme.
+                        </p>
+                        <ul class="project-tech">
+                            <li>JavaScript</li>
+                            <li>HTML5 Canvas</li>
+                            <li>CSS3</li>
+                            <li>Mobile UI/UX</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Designed and built by Jonathan Au.</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/jonathanau/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
