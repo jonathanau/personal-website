@@ -1,20 +1,44 @@
-# Jonathan Au — Personal Portfolio
+# Jonathan Au — Product Strategy & AI
 
-> Personal portfolio of Jonathan Au, featuring projects in software engineering, product management, and machine learning.
+> Personal portfolio of Jonathan Au, featuring his career in product strategy, applied AI/ML, and building exceptional customer experiences.
 
 ## About
 
-Jonathan Au is a multifaceted professional with a passion for building impactful software and AI-driven products. His work spans across full-stack engineering, machine learning research, and product management. He thrives in environments where he can leverage his technical depth to define strategy, architect scalable solutions, and deliver exceptional user experiences.
+Jonathan Au has spent two decades turning complex technical problems into products people enjoy. From designing touch-responsive animations for Microsoft's first tablet OS to turning living rooms into multiplayer arcades with nothing but a TV and a few phones, the thread through his career is making sophisticated technology feel simple for customers.
 
-Currently, he is exploring the frontiers of recommender systems and AI developer tools, creating open-source projects that bridge the gap between complex algorithms and practical applications.
+At Amazon, he creates gaming experiences that are fun, engaging, and effortless to dive into, removing the barriers that keep people from playing together. Before that, he owned personalization and engagement for Prime Gaming, shipping recommendation engines and A/B-tested features that measurably moved retention and conversion.
+
+He is currently investing in applied AI/ML, with recent certifications in deep learning, RAG, and generative AI from Stanford, DeepLearning.AI, and AWS.
 
 ### Skills
 
-- Product Management
+- Product Strategy
+- Generative AI
 - Machine Learning
-- Python
-- PyTorch
-- Full-Stack Development
+- Cross-functional Leadership
+- Data-driven Decisions
+
+## Experience
+
+### Amazon
+- Role: Cloud Gaming & Personalization
+- Description: Creating gaming experiences that are fun, engaging, and effortless to dive into. Previously owned personalization and engagement for Prime Gaming, shipping recommendation engines and A/B-tested features that measurably moved retention and conversion.
+
+### Salesforce
+- Role: API Strategy & Integration
+- Description: Led API strategy initiatives, helping shape the platform's developer-facing surface and integration capabilities across enterprise products.
+
+### Expedia
+- Role: Microservice Modernization & Conversion
+- Description: Drove microservice modernization and booking conversion optimization, applying technical depth to improve the traveler experience at scale.
+
+### Hulu
+- Role: Living Room Devices & Streaming
+- Description: Built and shipped seamless streaming experiences for living room devices, turning TVs into intuitive entertainment hubs.
+
+### Microsoft
+- Role: Windows Platform & UX
+- Description: Designed touch-responsive animations for Microsoft's first tablet OS. Contributed to the Windows platform, building a broad technical foundation in consumer-facing product engineering.
 
 ## Selected Projects
 
