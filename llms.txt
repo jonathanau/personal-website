@@ -4,7 +4,7 @@
 
 ## About
 
-Jonathan Au has spent two decades turning complex technical problems into products people enjoy. From designing touch-responsive animations for Microsoft's first tablet OS to turning living rooms into multiplayer arcades with nothing but a TV and a few phones, the thread through his career is making sophisticated technology feel simple for customers.
+Jonathan Au has spent two decades transforming complex technical problems into products people enjoy. From designing touch-responsive animations for Microsoft's first tablet OS to turning living rooms into multiplayer arcades with nothing but a TV and a few phones, the thread through his career is making sophisticated technology feel simple for customers.
 
 At Amazon, he creates gaming experiences that are fun, engaging, and effortless to dive into, removing the barriers that keep people from playing together. Before that, he owned personalization and engagement for Prime Gaming, shipping recommendation engines and A/B-tested features that measurably moved retention and conversion.
 
