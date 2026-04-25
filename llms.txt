@@ -1,6 +1,6 @@
 # Jonathan Au — Product Strategy & AI
 
-> Personal portfolio of Jonathan Au, featuring his career in product strategy, applied AI/ML, and building exceptional customer experiences.
+> Personal portfolio of Jonathan Au, featuring his career in product strategy, applied AI/ML, AI search optimization, and building exceptional customer experiences.
 
 ## About
 
@@ -41,6 +41,13 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Description: Designed touch-responsive animations for Microsoft's first tablet OS. Contributed to the Windows platform, building a broad technical foundation in consumer-facing product engineering.
 
 ## Selected Projects
+
+### Lumenyl AI Search Intelligence
+- Category: AI Search Intelligence
+- URL: https://lumenyl.onrender.com/
+- Repository: https://github.com/jonathanau/ai-search-optimizer
+- Description: A dependency-free Node.js web app for benchmarking a website's readiness for frontier AI answer engines. Lumenyl evaluates whether systems such as ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Microsoft Copilot can discover, understand, trust, extract, and cite a page.
+- Technologies: Node.js, GEO / AEO, Schema.org, AI Readiness
 
 ### Two-Tower Video Recommender
 - Category: Machine Learning / AI
