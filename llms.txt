@@ -44,7 +44,7 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 
 ### Lumenyl AI Search Intelligence
 - Category: AI Search Intelligence
-- URL: https://lumenyl.onrender.com/
+- URL: https://lumenyl.vercel.app/
 - Repository: https://github.com/jonathanau/ai-search-optimizer
 - Description: A dependency-free Node.js web app for benchmarking a website's readiness for frontier AI answer engines. Lumenyl evaluates whether systems such as ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Microsoft Copilot can discover, understand, trust, extract, and cite a page.
 - Technologies: Node.js, GEO / AEO, Schema.org, AI Readiness
