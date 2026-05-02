@@ -2,6 +2,7 @@
    Design System & Variables
    ========================================================================= */
 :root {
+    color-scheme: dark;
     /* Color Palette */
     --bg-base: #0a0a0f;
     --bg-surface: #12131b;
@@ -82,6 +83,10 @@
 /* =========================================================================
    Theme Overrides — Light Themes
    ========================================================================= */
+
+[data-theme$="-light"] {
+    color-scheme: light;
+}
 
 /* Cyber Light — cool blue-gray */
 [data-theme="cyber-light"] {
