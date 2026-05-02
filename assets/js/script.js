@@ -125,11 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Persist
             localStorage.setItem('theme', theme);
 
-            // Update meta theme-color
-            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-            if (metaThemeColor) {
-                metaThemeColor.setAttribute('content', themeColors[theme] || '#0a0a0f');
-            }
+            // Update meta theme-color after the CSS background transition completes
+            // This prevents an iOS Safari bug where the status bar text color inverts
+            setTimeout(() => {
+                const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                if (metaThemeColor) {
+                    metaThemeColor.setAttribute('content', themeColors[theme] || '#0a0a0f');
+                }
+            }, 400);
 
             // Sync active state across all theme option buttons (desktop + mobile)
             allThemeOptions.forEach(opt => {
