@@ -31,6 +31,318 @@
 }
 
 /* =========================================================================
+   Theme Overrides — Dark Themes
+   ========================================================================= */
+
+/* Sunset — warm amber/orange on dark charcoal */
+[data-theme="sunset"] {
+    --bg-base: #0f0b07;
+    --bg-surface: #1a1410;
+    --text-main: #f5f0e8;
+    --text-muted: #a89882;
+    --border-color: rgba(255, 159, 67, 0.08);
+    --accent-primary: #ff9f43;
+    --accent-secondary: #ee5a24;
+    --accent-tertiary: #f368e0;
+    --accent-quaternary: #ff6b6b;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 159, 67, 0.05);
+}
+
+/* Forest — emerald/mint on deep dark-green */
+[data-theme="forest"] {
+    --bg-base: #060d0a;
+    --bg-surface: #0f1a14;
+    --text-main: #e8f5e9;
+    --text-muted: #81a88a;
+    --border-color: rgba(0, 230, 118, 0.08);
+    --accent-primary: #00e676;
+    --accent-secondary: #69f0ae;
+    --accent-tertiary: #00bcd4;
+    --accent-quaternary: #26a69a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(0, 230, 118, 0.05);
+}
+
+/* Dusk — lavender/violet on dark plum */
+[data-theme="dusk"] {
+    --bg-base: #0c0a12;
+    --bg-surface: #15121f;
+    --text-main: #ede9f6;
+    --text-muted: #9b8ec2;
+    --border-color: rgba(179, 136, 255, 0.08);
+    --accent-primary: #b388ff;
+    --accent-secondary: #7c4dff;
+    --accent-tertiary: #ff80ab;
+    --accent-quaternary: #ea80fc;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(179, 136, 255, 0.05);
+}
+
+/* =========================================================================
+   Theme Overrides — Light Themes
+   ========================================================================= */
+
+/* Cyber Light — cool blue-gray */
+[data-theme="cyber-light"] {
+    --bg-base: #f0f4f8;
+    --bg-surface: #ffffff;
+    --text-main: #1a202c;
+    --text-muted: #64748b;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent-primary: #0891b2;
+    --accent-secondary: #3b82f6;
+    --accent-tertiary: #8b5cf6;
+    --accent-quaternary: #ec4899;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.06);
+}
+
+/* Sunset Light — warm cream */
+[data-theme="sunset-light"] {
+    --bg-base: #fdf6ee;
+    --bg-surface: #ffffff;
+    --text-main: #2d1f0e;
+    --text-muted: #92744e;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent-primary: #d97706;
+    --accent-secondary: #dc4a14;
+    --accent-tertiary: #db2777;
+    --accent-quaternary: #e11d48;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.06);
+}
+
+/* Forest Light — sage green */
+[data-theme="forest-light"] {
+    --bg-base: #f0f7f2;
+    --bg-surface: #ffffff;
+    --text-main: #1a2e22;
+    --text-muted: #5f8a6a;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent-primary: #059650;
+    --accent-secondary: #10b981;
+    --accent-tertiary: #0891b2;
+    --accent-quaternary: #0d9488;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.06);
+}
+
+/* Dusk Light — lavender tint */
+[data-theme="dusk-light"] {
+    --bg-base: #f3f0f9;
+    --bg-surface: #ffffff;
+    --text-main: #1e1533;
+    --text-muted: #7e6daa;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent-primary: #7c4dff;
+    --accent-secondary: #9c27b0;
+    --accent-tertiary: #e91e90;
+    --accent-quaternary: #f06292;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================================
+   Light Theme — Element-specific overrides
+   Hardcoded dark colors that need adjustment for light backgrounds.
+   ========================================================================= */
+[data-theme="cyber-light"] .navbar.scrolled,
+[data-theme="sunset-light"] .navbar.scrolled,
+[data-theme="forest-light"] .navbar.scrolled,
+[data-theme="dusk-light"] .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="cyber-light"] .mobile-menu,
+[data-theme="sunset-light"] .mobile-menu,
+[data-theme="forest-light"] .mobile-menu,
+[data-theme="dusk-light"] .mobile-menu {
+    background: rgba(255, 255, 255, 0.98);
+}
+
+[data-theme="cyber-light"] .footer,
+[data-theme="sunset-light"] .footer,
+[data-theme="forest-light"] .footer,
+[data-theme="dusk-light"] .footer {
+    background: rgba(245, 245, 250, 0.5);
+}
+
+[data-theme="cyber-light"] .btn-primary,
+[data-theme="sunset-light"] .btn-primary,
+[data-theme="forest-light"] .btn-primary,
+[data-theme="dusk-light"] .btn-primary {
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="cyber-light"] .btn-primary:hover,
+[data-theme="sunset-light"] .btn-primary:hover,
+[data-theme="forest-light"] .btn-primary:hover,
+[data-theme="dusk-light"] .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="cyber-light"] .glass-card:hover,
+[data-theme="sunset-light"] .glass-card:hover,
+[data-theme="forest-light"] .glass-card:hover,
+[data-theme="dusk-light"] .glass-card:hover {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="cyber-light"] .bg-glow,
+[data-theme="sunset-light"] .bg-glow,
+[data-theme="forest-light"] .bg-glow,
+[data-theme="dusk-light"] .bg-glow {
+    opacity: 0.15;
+}
+
+[data-theme="cyber-light"] .timeline-marker,
+[data-theme="sunset-light"] .timeline-marker,
+[data-theme="forest-light"] .timeline-marker,
+[data-theme="dusk-light"] .timeline-marker {
+    border-color: var(--bg-base);
+}
+
+/* =========================================================================
+   Theme Switcher UI
+   ========================================================================= */
+.theme-switcher-wrapper {
+    position: relative;
+}
+
+.theme-switcher {
+    cursor: pointer;
+    position: relative;
+}
+
+.theme-popover {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1rem;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 200;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.theme-popover.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-group-title {
+    display: block;
+    font-size: 0.7rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    padding: 0 0.25rem;
+}
+
+.theme-group + .theme-group {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 0.25rem;
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    font-family: var(--font-heading);
+}
+
+.theme-option:hover {
+    background: var(--glass-bg);
+}
+
+.theme-swatch {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Swatch gradient colors */
+.theme-swatch-cyber { background: linear-gradient(135deg, #00f2fe, #4facfe); }
+.theme-swatch-sunset { background: linear-gradient(135deg, #ff9f43, #ee5a24); }
+.theme-swatch-forest { background: linear-gradient(135deg, #00e676, #69f0ae); }
+.theme-swatch-dusk { background: linear-gradient(135deg, #b388ff, #7c4dff); }
+.theme-swatch-cyber-light { background: linear-gradient(135deg, #0891b2, #3b82f6); }
+.theme-swatch-sunset-light { background: linear-gradient(135deg, #d97706, #dc4a14); }
+.theme-swatch-forest-light { background: linear-gradient(135deg, #059650, #10b981); }
+.theme-swatch-dusk-light { background: linear-gradient(135deg, #7c4dff, #9c27b0); }
+
+.theme-option.active .theme-swatch {
+    box-shadow: inset 0 0 0 2px var(--text-main), 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--text-muted);
+}
+
+.theme-option-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.theme-option.active .theme-option-label {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Mobile theme switcher */
+.mobile-theme-switcher {
+    padding: 1rem 0;
+}
+
+.mobile-theme-switcher .theme-group-title {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.mobile-theme-switcher .theme-group + .theme-group {
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.mobile-theme-switcher .theme-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.mobile-theme-switcher .theme-swatch {
+    width: 36px;
+    height: 36px;
+}
+
+/* =========================================================================
    Reset & Base Styles
    ========================================================================= */
 * {
@@ -51,6 +363,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a {
@@ -236,6 +549,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.3rem;
     font-size: 0.95rem;
     font-weight: 500;
+    color: var(--text-main);
     background: rgba(255, 255, 255, 0.05);
     padding: 0.5rem 1rem;
     border-radius: 20px;

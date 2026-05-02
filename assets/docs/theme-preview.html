@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Preview — Jonathan Au Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050507;
+            color: #f3f4f6;
+            padding: 3rem 2rem;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 560px) {
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============ Theme Card Container ============ */
+        .theme-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .theme-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 1.5rem 2rem 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .theme-label .emoji {
+            font-size: 1.6rem;
+        }
+
+        /* ============ Inner Preview ============ */
+        .preview {
+            padding: 1.5rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview .glow-1,
+        .preview .glow-2 {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .preview .glow-1 {
+            width: 200px;
+            height: 200px;
+            top: -60px;
+            left: -40px;
+        }
+
+        .preview .glow-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -80px;
+            right: -60px;
+        }
+
+        .preview-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Color Swatches Row */
+        .swatches {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .swatch-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .swatch-circle:hover {
+            transform: scale(1.15);
+        }
+
+        .swatch-label {
+            font-size: 0.65rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Nav Preview */
+        .nav-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Hero Preview */
+        .hero-preview {
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-preview .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-preview h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-preview .gradient-name {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-preview p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-preview {
+            padding: 0.55rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: default;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        /* Glass Card Preview */
+        .card-preview {
+            padding: 1.2rem;
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .card-preview h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-preview p {
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-family: 'Outfit', sans-serif;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Timeline dot */
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.4rem;
+            box-shadow: 0 0 8px;
+            vertical-align: middle;
+        }
+
+        /* ============ THEME-SPECIFIC COLORS ============ */
+
+        /* --- CYBER --- */
+        .theme-cyber { background: #0a0a0f; border: 1px solid rgba(0, 242, 254, 0.12); }
+        .theme-cyber .theme-label { color: #f3f4f6; }
+        .theme-cyber .glow-1 { background: radial-gradient(circle, #00f2fe, transparent 70%); }
+        .theme-cyber .glow-2 { background: radial-gradient(circle, #b122e5, transparent 70%); }
+        .theme-cyber .nav-preview { background: rgba(255,255,255,0.03); }
+        .theme-cyber .nav-logo span { color: #00f2fe; }
+        .theme-cyber .nav-items { color: #9ca3af; }
+        .theme-cyber .badge { background: rgba(0,242,254,0.1); color: #00f2fe; border: 1px solid rgba(0,242,254,0.2); }
+        .theme-cyber .gradient-name { background: linear-gradient(135deg, #00f2fe, #4facfe); }
+        .theme-cyber .hero-preview p { color: #9ca3af; }
+        .theme-cyber .btn-primary-preview { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #000; }
+        .theme-cyber .btn-outline { color: #f3f4f6; }
+        .theme-cyber .card-preview { background: rgba(255,255,255,0.03); }
+        .theme-cyber .card-preview h4 { color: #f3f4f6; }
+        .theme-cyber .card-preview p { color: #9ca3af; }
+        .theme-cyber .tech-tag { background: rgba(255,255,255,0.05); color: #f3f4f6; }
+        .theme-cyber .tech-tag:hover { border-color: #00f2fe; color: #00f2fe; }
+        .theme-cyber .timeline-dot { background: #00f2fe; box-shadow: 0 0 8px rgba(0,242,254,0.5); }
+        .theme-cyber .swatch-label { color: #9ca3af; }
+
+        /* --- SUNSET --- */
+        .theme-sunset { background: #0f0b07; border: 1px solid rgba(255, 159, 67, 0.12); }
+        .theme-sunset .theme-label { color: #f5f0e8; }
+        .theme-sunset .glow-1 { background: radial-gradient(circle, #ff9f43, transparent 70%); }
+        .theme-sunset .glow-2 { background: radial-gradient(circle, #f368e0, transparent 70%); }
+        .theme-sunset .nav-preview { background: rgba(255,255,255,0.03); }
+        .theme-sunset .nav-logo span { color: #ff9f43; }
+        .theme-sunset .nav-items { color: #a89882; }
+        .theme-sunset .badge { background: rgba(255,159,67,0.1); color: #ff9f43; border: 1px solid rgba(255,159,67,0.2); }
+        .theme-sunset .gradient-name { background: linear-gradient(135deg, #ff9f43, #ee5a24); }
+        .theme-sunset .hero-preview p { color: #a89882; }
+        .theme-sunset .btn-primary-preview { background: linear-gradient(135deg, #ee5a24, #ff9f43); color: #000; }
+        .theme-sunset .btn-outline { color: #f5f0e8; }
+        .theme-sunset .card-preview { background: rgba(255,255,255,0.03); }
+        .theme-sunset .card-preview h4 { color: #f5f0e8; }
+        .theme-sunset .card-preview p { color: #a89882; }
+        .theme-sunset .tech-tag { background: rgba(255,255,255,0.05); color: #f5f0e8; }
+        .theme-sunset .timeline-dot { background: #ff9f43; box-shadow: 0 0 8px rgba(255,159,67,0.5); }
+        .theme-sunset .swatch-label { color: #a89882; }
+
+        /* --- FOREST --- */
+        .theme-forest { background: #060d0a; border: 1px solid rgba(0, 230, 118, 0.12); }
+        .theme-forest .theme-label { color: #e8f5e9; }
+        .theme-forest .glow-1 { background: radial-gradient(circle, #00e676, transparent 70%); }
+        .theme-forest .glow-2 { background: radial-gradient(circle, #00bcd4, transparent 70%); }
+        .theme-forest .nav-preview { background: rgba(255,255,255,0.03); }
+        .theme-forest .nav-logo span { color: #00e676; }
+        .theme-forest .nav-items { color: #81a88a; }
+        .theme-forest .badge { background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.2); }
+        .theme-forest .gradient-name { background: linear-gradient(135deg, #00e676, #69f0ae); }
+        .theme-forest .hero-preview p { color: #81a88a; }
+        .theme-forest .btn-primary-preview { background: linear-gradient(135deg, #69f0ae, #00e676); color: #000; }
+        .theme-forest .btn-outline { color: #e8f5e9; }
+        .theme-forest .card-preview { background: rgba(255,255,255,0.03); }
+        .theme-forest .card-preview h4 { color: #e8f5e9; }
+        .theme-forest .card-preview p { color: #81a88a; }
+        .theme-forest .tech-tag { background: rgba(255,255,255,0.05); color: #e8f5e9; }
+        .theme-forest .timeline-dot { background: #00e676; box-shadow: 0 0 8px rgba(0,230,118,0.5); }
+        .theme-forest .swatch-label { color: #81a88a; }
+
+        /* --- DUSK --- */
+        .theme-dusk { background: #0c0a12; border: 1px solid rgba(179, 136, 255, 0.12); }
+        .theme-dusk .theme-label { color: #ede9f6; }
+        .theme-dusk .glow-1 { background: radial-gradient(circle, #b388ff, transparent 70%); }
+        .theme-dusk .glow-2 { background: radial-gradient(circle, #ff80ab, transparent 70%); }
+        .theme-dusk .nav-preview { background: rgba(255,255,255,0.03); }
+        .theme-dusk .nav-logo span { color: #b388ff; }
+        .theme-dusk .nav-items { color: #9b8ec2; }
+        .theme-dusk .badge { background: rgba(179,136,255,0.1); color: #b388ff; border: 1px solid rgba(179,136,255,0.2); }
+        .theme-dusk .gradient-name { background: linear-gradient(135deg, #b388ff, #7c4dff); }
+        .theme-dusk .hero-preview p { color: #9b8ec2; }
+        .theme-dusk .btn-primary-preview { background: linear-gradient(135deg, #7c4dff, #b388ff); color: #fff; }
+        .theme-dusk .btn-outline { color: #ede9f6; }
+        .theme-dusk .card-preview { background: rgba(255,255,255,0.03); }
+        .theme-dusk .card-preview h4 { color: #ede9f6; }
+        .theme-dusk .card-preview p { color: #9b8ec2; }
+        .theme-dusk .tech-tag { background: rgba(255,255,255,0.05); color: #ede9f6; }
+        .theme-dusk .timeline-dot { background: #b388ff; box-shadow: 0 0 8px rgba(179,136,255,0.5); }
+        .theme-dusk .swatch-label { color: #9b8ec2; }
+
+        /* ============ SECTION DIVIDERS ============ */
+        .section-divider {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 3rem 0 0.3rem;
+        }
+        .section-divider-sub {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ============ LIGHT THEME SHARED ============ */
+        .theme-cyber-light .swatch-circle,
+        .theme-sunset-light .swatch-circle,
+        .theme-forest-light .swatch-circle,
+        .theme-dusk-light .swatch-circle {
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- CYBER LIGHT --- */
+        .theme-cyber-light { background: #f0f4f8; border: 1px solid rgba(8,145,178,0.2); }
+        .theme-cyber-light .theme-label { color: #1a202c; }
+        .theme-cyber-light .glow-1 { background: radial-gradient(circle, rgba(8,145,178,0.15), transparent 70%); }
+        .theme-cyber-light .glow-2 { background: radial-gradient(circle, rgba(139,92,246,0.12), transparent 70%); }
+        .theme-cyber-light .nav-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-cyber-light .nav-logo { color: #1a202c; }
+        .theme-cyber-light .nav-logo span { color: #0891b2; }
+        .theme-cyber-light .nav-items { color: #64748b; }
+        .theme-cyber-light .badge { background: rgba(8,145,178,0.1); color: #0891b2; border: 1px solid rgba(8,145,178,0.2); }
+        .theme-cyber-light .gradient-name { background: linear-gradient(135deg, #0891b2, #3b82f6); }
+        .theme-cyber-light .hero-preview h2 { color: #1a202c; }
+        .theme-cyber-light .hero-preview p { color: #64748b; }
+        .theme-cyber-light .btn-primary-preview { background: linear-gradient(135deg, #3b82f6, #0891b2); color: #fff; }
+        .theme-cyber-light .btn-outline { color: #1a202c; border-color: rgba(0,0,0,0.12); }
+        .theme-cyber-light .card-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-cyber-light .card-preview h4 { color: #1a202c; }
+        .theme-cyber-light .card-preview p { color: #64748b; }
+        .theme-cyber-light .tech-tag { background: rgba(8,145,178,0.06); color: #1a202c; border-color: rgba(0,0,0,0.08); }
+        .theme-cyber-light .timeline-dot { background: #0891b2; box-shadow: 0 0 6px rgba(8,145,178,0.4); }
+        .theme-cyber-light .swatch-label { color: #64748b; }
+
+        /* --- SUNSET LIGHT --- */
+        .theme-sunset-light { background: #fdf6ee; border: 1px solid rgba(217,119,6,0.2); }
+        .theme-sunset-light .theme-label { color: #2d1f0e; }
+        .theme-sunset-light .glow-1 { background: radial-gradient(circle, rgba(217,119,6,0.12), transparent 70%); }
+        .theme-sunset-light .glow-2 { background: radial-gradient(circle, rgba(219,39,119,0.1), transparent 70%); }
+        .theme-sunset-light .nav-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-sunset-light .nav-logo { color: #2d1f0e; }
+        .theme-sunset-light .nav-logo span { color: #d97706; }
+        .theme-sunset-light .nav-items { color: #92744e; }
+        .theme-sunset-light .badge { background: rgba(217,119,6,0.1); color: #d97706; border: 1px solid rgba(217,119,6,0.2); }
+        .theme-sunset-light .gradient-name { background: linear-gradient(135deg, #d97706, #dc4a14); }
+        .theme-sunset-light .hero-preview h2 { color: #2d1f0e; }
+        .theme-sunset-light .hero-preview p { color: #92744e; }
+        .theme-sunset-light .btn-primary-preview { background: linear-gradient(135deg, #dc4a14, #d97706); color: #fff; }
+        .theme-sunset-light .btn-outline { color: #2d1f0e; border-color: rgba(0,0,0,0.12); }
+        .theme-sunset-light .card-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-sunset-light .card-preview h4 { color: #2d1f0e; }
+        .theme-sunset-light .card-preview p { color: #92744e; }
+        .theme-sunset-light .tech-tag { background: rgba(217,119,6,0.06); color: #2d1f0e; border-color: rgba(0,0,0,0.08); }
+        .theme-sunset-light .timeline-dot { background: #d97706; box-shadow: 0 0 6px rgba(217,119,6,0.4); }
+        .theme-sunset-light .swatch-label { color: #92744e; }
+
+        /* --- FOREST LIGHT --- */
+        .theme-forest-light { background: #f0f7f2; border: 1px solid rgba(5,150,80,0.2); }
+        .theme-forest-light .theme-label { color: #1a2e22; }
+        .theme-forest-light .glow-1 { background: radial-gradient(circle, rgba(5,150,80,0.12), transparent 70%); }
+        .theme-forest-light .glow-2 { background: radial-gradient(circle, rgba(8,145,178,0.1), transparent 70%); }
+        .theme-forest-light .nav-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-forest-light .nav-logo { color: #1a2e22; }
+        .theme-forest-light .nav-logo span { color: #059650; }
+        .theme-forest-light .nav-items { color: #5f8a6a; }
+        .theme-forest-light .badge { background: rgba(5,150,80,0.1); color: #059650; border: 1px solid rgba(5,150,80,0.2); }
+        .theme-forest-light .gradient-name { background: linear-gradient(135deg, #059650, #10b981); }
+        .theme-forest-light .hero-preview h2 { color: #1a2e22; }
+        .theme-forest-light .hero-preview p { color: #5f8a6a; }
+        .theme-forest-light .btn-primary-preview { background: linear-gradient(135deg, #10b981, #059650); color: #fff; }
+        .theme-forest-light .btn-outline { color: #1a2e22; border-color: rgba(0,0,0,0.12); }
+        .theme-forest-light .card-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-forest-light .card-preview h4 { color: #1a2e22; }
+        .theme-forest-light .card-preview p { color: #5f8a6a; }
+        .theme-forest-light .tech-tag { background: rgba(5,150,80,0.06); color: #1a2e22; border-color: rgba(0,0,0,0.08); }
+        .theme-forest-light .timeline-dot { background: #059650; box-shadow: 0 0 6px rgba(5,150,80,0.4); }
+        .theme-forest-light .swatch-label { color: #5f8a6a; }
+
+        /* --- DUSK LIGHT --- */
+        .theme-dusk-light { background: #f3f0f9; border: 1px solid rgba(124,77,255,0.2); }
+        .theme-dusk-light .theme-label { color: #1e1533; }
+        .theme-dusk-light .glow-1 { background: radial-gradient(circle, rgba(124,77,255,0.12), transparent 70%); }
+        .theme-dusk-light .glow-2 { background: radial-gradient(circle, rgba(233,30,144,0.1), transparent 70%); }
+        .theme-dusk-light .nav-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-dusk-light .nav-logo { color: #1e1533; }
+        .theme-dusk-light .nav-logo span { color: #7c4dff; }
+        .theme-dusk-light .nav-items { color: #7e6daa; }
+        .theme-dusk-light .badge { background: rgba(124,77,255,0.1); color: #7c4dff; border: 1px solid rgba(124,77,255,0.2); }
+        .theme-dusk-light .gradient-name { background: linear-gradient(135deg, #7c4dff, #9c27b0); }
+        .theme-dusk-light .hero-preview h2 { color: #1e1533; }
+        .theme-dusk-light .hero-preview p { color: #7e6daa; }
+        .theme-dusk-light .btn-primary-preview { background: linear-gradient(135deg, #9c27b0, #7c4dff); color: #fff; }
+        .theme-dusk-light .btn-outline { color: #1e1533; border-color: rgba(0,0,0,0.12); }
+        .theme-dusk-light .card-preview { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+        .theme-dusk-light .card-preview h4 { color: #1e1533; }
+        .theme-dusk-light .card-preview p { color: #7e6daa; }
+        .theme-dusk-light .tech-tag { background: rgba(124,77,255,0.06); color: #1e1533; border-color: rgba(0,0,0,0.08); }
+        .theme-dusk-light .timeline-dot { background: #7c4dff; box-shadow: 0 0 6px rgba(124,77,255,0.4); }
+        .theme-dusk-light .swatch-label { color: #7e6daa; }
+    </style>
+</head>
+<body>
+    <h1>🎨 Theme Preview</h1>
+    <p class="subtitle">Compare all 8 proposed color schemes — 4 dark, 4 light</p>
+
+    <div class="section-divider">🌙 Dark Themes</div>
+    <p class="section-divider-sub">Rich, moody backgrounds with vibrant accent glows</p>
+
+    <div class="themes-grid">
+        <!-- ==================== CYBER ==================== -->
+        <div class="theme-card theme-cyber">
+            <div class="theme-label"><span class="emoji">🌊</span> Cyber <span style="font-weight:400;font-size:0.85rem;opacity:0.5;margin-left:0.5rem;">current</span></div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#0a0a0f;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#12131b;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#f3f4f6;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#9ca3af;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#00f2fe;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#4facfe;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#b122e5;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SUNSET ==================== -->
+        <div class="theme-card theme-sunset">
+            <div class="theme-label"><span class="emoji">🌅</span> Sunset</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#0f0b07;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#1a1410;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#f5f0e8;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#a89882;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ff9f43;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ee5a24;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#f368e0;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== FOREST ==================== -->
+        <div class="theme-card theme-forest">
+            <div class="theme-label"><span class="emoji">🌿</span> Forest</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#060d0a;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#0f1a14;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#e8f5e9;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#81a88a;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#00e676;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#69f0ae;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#00bcd4;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DUSK ==================== -->
+        <div class="theme-card theme-dusk">
+            <div class="theme-label"><span class="emoji">🪻</span> Dusk</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#0c0a12;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#15121f;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ede9f6;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#9b8ec2;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#b388ff;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#7c4dff;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ff80ab;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider">☀️ Light Themes</div>
+    <p class="section-divider-sub">Clean, airy backgrounds with refined accent colors</p>
+
+    <div class="themes-grid">
+        <!-- ==================== CYBER LIGHT ==================== -->
+        <div class="theme-card theme-cyber-light">
+            <div class="theme-label"><span class="emoji">💎</span> Cyber Light</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#f0f4f8;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ffffff;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#1a202c;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#64748b;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#0891b2;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#3b82f6;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#8b5cf6;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SUNSET LIGHT ==================== -->
+        <div class="theme-card theme-sunset-light">
+            <div class="theme-label"><span class="emoji">🍑</span> Sunset Light</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#fdf6ee;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ffffff;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#2d1f0e;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#92744e;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#d97706;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#dc4a14;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#db2777;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== FOREST LIGHT ==================== -->
+        <div class="theme-card theme-forest-light">
+            <div class="theme-label"><span class="emoji">🌱</span> Forest Light</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#f0f7f2;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ffffff;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#1a2e22;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#5f8a6a;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#059650;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#10b981;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#0891b2;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DUSK LIGHT ==================== -->
+        <div class="theme-card theme-dusk-light">
+            <div class="theme-label"><span class="emoji">🔮</span> Dusk Light</div>
+            <div class="preview">
+                <div class="glow-1"></div>
+                <div class="glow-2"></div>
+                <div class="preview-content">
+                    <div class="swatches">
+                        <div class="swatch"><div class="swatch-circle" style="background:#f3f0f9;"></div><span class="swatch-label">Base</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#ffffff;"></div><span class="swatch-label">Surface</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#1e1533;"></div><span class="swatch-label">Text</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#7e6daa;"></div><span class="swatch-label">Muted</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#7c4dff;"></div><span class="swatch-label">Primary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#9c27b0;"></div><span class="swatch-label">Secondary</span></div>
+                        <div class="swatch"><div class="swatch-circle" style="background:#e91e90;"></div><span class="swatch-label">Tertiary</span></div>
+                    </div>
+                    <div class="nav-preview">
+                        <div class="nav-logo">JA<span>.</span></div>
+                        <div class="nav-items"><span>About</span><span>Experience</span><span>Projects</span></div>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="badge">Welcome to my portfolio</div>
+                        <h2>Hi, I'm <span class="gradient-name">Jonathan Au</span>.</h2>
+                        <p>Two decades transforming complex technical problems into products people enjoy.</p>
+                    </div>
+                    <div class="btn-row">
+                        <div class="btn-preview btn-primary-preview">More About Me ↓</div>
+                        <div class="btn-preview btn-outline">Experience</div>
+                    </div>
+                    <div class="card-preview">
+                        <h4><span class="timeline-dot"></span> Cloud Gaming & Personalization</h4>
+                        <p>Creating gaming experiences that are fun, engaging, and effortless to dive into.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Product Strategy</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -134,6 +134,9 @@
     }
     </script>
 
+    <!-- Theme Init (prevents flash of wrong theme) -->
+    <script src="./assets/js/theme-init.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
 
@@ -156,6 +159,55 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <div class="theme-switcher-wrapper">
+                    <button class="theme-switcher nav-btn" id="theme-switcher" aria-label="Change color theme">
+                        <i class="ph ph-palette"></i>
+                    </button>
+                    <div class="theme-popover" id="theme-popover">
+                        <div class="theme-group">
+                            <span class="theme-group-title">Dark</span>
+                            <div class="theme-options">
+                                <button data-theme="cyber" class="theme-option active" aria-label="Cyber theme" title="Cyber">
+                                    <span class="theme-swatch theme-swatch-cyber"></span>
+                                    <span class="theme-option-label">Cyber</span>
+                                </button>
+                                <button data-theme="sunset" class="theme-option" aria-label="Sunset theme" title="Sunset">
+                                    <span class="theme-swatch theme-swatch-sunset"></span>
+                                    <span class="theme-option-label">Sunset</span>
+                                </button>
+                                <button data-theme="forest" class="theme-option" aria-label="Forest theme" title="Forest">
+                                    <span class="theme-swatch theme-swatch-forest"></span>
+                                    <span class="theme-option-label">Forest</span>
+                                </button>
+                                <button data-theme="dusk" class="theme-option" aria-label="Dusk theme" title="Dusk">
+                                    <span class="theme-swatch theme-swatch-dusk"></span>
+                                    <span class="theme-option-label">Dusk</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="theme-group">
+                            <span class="theme-group-title">Light</span>
+                            <div class="theme-options">
+                                <button data-theme="cyber-light" class="theme-option" aria-label="Cyber Light theme" title="Cyber Light">
+                                    <span class="theme-swatch theme-swatch-cyber-light"></span>
+                                    <span class="theme-option-label">Cyber</span>
+                                </button>
+                                <button data-theme="sunset-light" class="theme-option" aria-label="Sunset Light theme" title="Sunset Light">
+                                    <span class="theme-swatch theme-swatch-sunset-light"></span>
+                                    <span class="theme-option-label">Sunset</span>
+                                </button>
+                                <button data-theme="forest-light" class="theme-option" aria-label="Forest Light theme" title="Forest Light">
+                                    <span class="theme-swatch theme-swatch-forest-light"></span>
+                                    <span class="theme-option-label">Forest</span>
+                                </button>
+                                <button data-theme="dusk-light" class="theme-option" aria-label="Dusk Light theme" title="Dusk Light">
+                                    <span class="theme-swatch theme-swatch-dusk-light"></span>
+                                    <span class="theme-option-label">Dusk</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="https://www.linkedin.com/in/jonathanau/" target="_blank" rel="noopener noreferrer me"
                     class="nav-btn">LinkedIn <i class="ph ph-arrow-up-right"></i></a>
             </div>
@@ -172,6 +224,50 @@
         <a href="#projects" class="mobile-link">Projects</a>
         <a href="https://www.linkedin.com/in/jonathanau/" target="_blank" rel="noopener noreferrer me"
             class="mobile-link">LinkedIn</a>
+        <div class="mobile-theme-switcher">
+            <div class="theme-group">
+                <span class="theme-group-title">Dark Themes</span>
+                <div class="theme-options">
+                    <button data-theme="cyber" class="theme-option active" aria-label="Cyber theme">
+                        <span class="theme-swatch theme-swatch-cyber"></span>
+                        <span class="theme-option-label">Cyber</span>
+                    </button>
+                    <button data-theme="sunset" class="theme-option" aria-label="Sunset theme">
+                        <span class="theme-swatch theme-swatch-sunset"></span>
+                        <span class="theme-option-label">Sunset</span>
+                    </button>
+                    <button data-theme="forest" class="theme-option" aria-label="Forest theme">
+                        <span class="theme-swatch theme-swatch-forest"></span>
+                        <span class="theme-option-label">Forest</span>
+                    </button>
+                    <button data-theme="dusk" class="theme-option" aria-label="Dusk theme">
+                        <span class="theme-swatch theme-swatch-dusk"></span>
+                        <span class="theme-option-label">Dusk</span>
+                    </button>
+                </div>
+            </div>
+            <div class="theme-group">
+                <span class="theme-group-title">Light Themes</span>
+                <div class="theme-options">
+                    <button data-theme="cyber-light" class="theme-option" aria-label="Cyber Light theme">
+                        <span class="theme-swatch theme-swatch-cyber-light"></span>
+                        <span class="theme-option-label">Cyber</span>
+                    </button>
+                    <button data-theme="sunset-light" class="theme-option" aria-label="Sunset Light theme">
+                        <span class="theme-swatch theme-swatch-sunset-light"></span>
+                        <span class="theme-option-label">Sunset</span>
+                    </button>
+                    <button data-theme="forest-light" class="theme-option" aria-label="Forest Light theme">
+                        <span class="theme-swatch theme-swatch-forest-light"></span>
+                        <span class="theme-option-label">Forest</span>
+                    </button>
+                    <button data-theme="dusk-light" class="theme-option" aria-label="Dusk Light theme">
+                        <span class="theme-swatch theme-swatch-dusk-light"></span>
+                        <span class="theme-option-label">Dusk</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Hero Section -->
