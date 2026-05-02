@@ -126,16 +126,25 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', theme);
 
             // Update meta theme-color after the CSS background transition completes
-            // Recreating the DOM node forces Safari to update the status bar correctly
+            // Recreating the DOM node forces Safari to update the status bar correctly, 
+            // but the most reliable way to fix iOS Safari 15+ is to simply omit the tag
+            // and let it natively inherit the html background color.
             setTimeout(() => {
                 const oldMeta = document.querySelector('meta[name="theme-color"]');
                 if (oldMeta) {
                     oldMeta.remove();
                 }
-                const newMeta = document.createElement('meta');
-                newMeta.name = 'theme-color';
-                newMeta.content = themeColors[theme] || '#0a0a0f';
-                document.head.appendChild(newMeta);
+                
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                
+                // Only inject theme-color meta tag for Android/Chrome. 
+                // iOS Safari correctly tints the status bar based on the HTML background color naturally.
+                if (!isIOS) {
+                    const newMeta = document.createElement('meta');
+                    newMeta.name = 'theme-color';
+                    newMeta.content = themeColors[theme] || '#0a0a0f';
+                    document.head.appendChild(newMeta);
+                }
             }, 400);
 
             // Sync active state across all theme option buttons (desktop + mobile)

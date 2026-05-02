@@ -23,9 +23,12 @@
          if (oldMeta) {
              oldMeta.parentNode.removeChild(oldMeta);
          }
-         var newMeta = document.createElement('meta');
-         newMeta.name = 'theme-color';
-         newMeta.content = themeColors[saved] || '#0a0a0f';
-         document.getElementsByTagName('head')[0].appendChild(newMeta);
+         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+         if (!isIOS) {
+             var newMeta = document.createElement('meta');
+             newMeta.name = 'theme-color';
+             newMeta.content = themeColors[saved] || '#0a0a0f';
+             document.getElementsByTagName('head')[0].appendChild(newMeta);
+         }
      }
  })();
