@@ -19,16 +19,9 @@
      };
      if (saved && saved !== 'cyber') {
          document.documentElement.setAttribute('data-theme', saved);
-         var oldMeta = document.querySelector('meta[name="theme-color"]');
-         if (oldMeta) {
-             oldMeta.parentNode.removeChild(oldMeta);
-         }
-         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-         if (!isIOS) {
-             var newMeta = document.createElement('meta');
-             newMeta.name = 'theme-color';
-             newMeta.content = themeColors[saved] || '#0a0a0f';
-             document.getElementsByTagName('head')[0].appendChild(newMeta);
+         var meta = document.querySelector('meta[name="theme-color"]');
+         if (meta) {
+             meta.setAttribute('content', themeColors[saved] || '#0a0a0f');
          }
      }
  })();
