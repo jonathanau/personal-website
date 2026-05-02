@@ -353,6 +353,8 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--bg-base);
+    transition: background-color 0.4s ease;
 }
 
 body {
