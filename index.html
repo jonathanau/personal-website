@@ -84,18 +84,6 @@
           "position": 1,
           "item": {
             "@type": "SoftwareApplication",
-            "name": "Lumenyl AI Search Intelligence",
-            "applicationCategory": "DeveloperApplication",
-            "description": "A dependency-free Node.js web app for benchmarking a website's readiness for frontier AI answer engines. Evaluates whether ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Microsoft Copilot can discover, understand, trust, extract, and cite a page.",
-            "url": "https://lumenyl.vercel.app/",
-            "codeRepository": "https://github.com/jonathanau/ai-search-optimizer"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "SoftwareApplication",
             "name": "Two-Tower Video Recommender",
             "applicationCategory": "DeveloperApplication",
             "description": "A minimalist, research-oriented PyTorch implementation of a two-tower retrieval model for video recommendations. Features sequential user modeling via Transformer encoders, MovieLens genre embeddings, and ANN retrieval using HNSW for fast top-k recommendation.",
@@ -104,7 +92,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 2,
           "item": {
             "@type": "SoftwareApplication",
             "name": "PM Project Brain",
@@ -115,13 +103,48 @@
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 3,
           "item": {
             "@type": "SoftwareApplication",
             "name": "Mobile-Optimized Snake",
             "applicationCategory": "GameApplication",
             "description": "A fully responsive, touch-friendly modern implementation of the classic Snake game. Engineered specifically for seamless play on mobile devices as well as desktop browsers with an intuitive control scheme.",
             "url": "https://thesnakegame.onrender.com/"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "MDPreview",
+            "applicationCategory": "DeveloperApplication",
+            "description": "A minimal, distraction-free Markdown editor built for the kinds of writing that feed AI systems: system prompts, agent instructions, RAG source documents, and project context files. Runs entirely in the browser with no server or account required, and documents persist locally via IndexedDB. Features a CodeMirror 6 split-pane editor, 8 color themes, multi-document management, and export to .md or rendered HTML.",
+            "url": "https://mdpreview.onrender.com/",
+            "codeRepository": "https://github.com/jonathanau/mdpreview"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Lumenyl AI Search Intelligence",
+            "applicationCategory": "DeveloperApplication",
+            "description": "A dependency-free Node.js web app for benchmarking a website's readiness for frontier AI answer engines. Evaluates whether ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Microsoft Copilot can discover, understand, trust, extract, and cite a page.",
+            "url": "https://lumenyl.vercel.app/",
+            "codeRepository": "https://github.com/jonathanau/ai-search-optimizer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Neovim Configuration",
+            "applicationCategory": "DeveloperApplication",
+            "description": "A modern, Lua-based Neovim setup with a lineage tracing back to my vimrc from 2005. Built around lazy.nvim for plugin management, Mason for automatic LSP installation, Telescope for fuzzy finding, and Treesitter for syntax highlighting.",
+            "codeRepository": "https://github.com/jonathanau/neovim-config"
           }
         }
       ]
@@ -486,6 +509,40 @@
                 <article class="project-card glass-card reveal delay-3">
                     <div class="project-content">
                         <div class="project-header">
+                            <span class="project-category">Developer Tools</span>
+                            <div class="project-links">
+                                <a href="https://github.com/jonathanau/mdpreview" target="_blank"
+                                    rel="noopener noreferrer" aria-label="GitHub Repository"><i
+                                        class="ph ph-github-logo"></i></a>
+                                <a href="https://mdpreview.onrender.com/" target="_blank"
+                                    rel="noopener noreferrer" aria-label="External Link"><i
+                                        class="ph ph-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">
+                            <a href="https://mdpreview.onrender.com/" target="_blank"
+                                rel="noopener noreferrer">MDPreview</a>
+                        </h3>
+                        <p class="project-description">
+                            A minimal, distraction-free Markdown editor built for the kinds of writing that feed AI
+                            systems: system prompts, agent instructions, RAG source documents, and project context
+                            files. Runs entirely in the browser with no server or account required, and documents
+                            persist locally via IndexedDB. Features a CodeMirror 6 split-pane editor, 8 color themes,
+                            multi-document management, and export to .md or rendered HTML.
+                        </p>
+                        <ul class="project-tech">
+                            <li>JavaScript</li>
+                            <li>CodeMirror 6</li>
+                            <li>IndexedDB</li>
+                            <li>Vite</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card glass-card reveal delay-4">
+                    <div class="project-content">
+                        <div class="project-header">
                             <span class="project-category">AI Search Intelligence</span>
                             <div class="project-links">
                                 <a href="https://github.com/jonathanau/ai-search-optimizer" target="_blank"
@@ -510,6 +567,39 @@
                             <li>GEO / AEO</li>
                             <li>Schema.org</li>
                             <li>AI Readiness</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card glass-card reveal delay-5">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-category">Dev Environment</span>
+                            <div class="project-links">
+                                <a href="https://github.com/jonathanau/neovim-config" target="_blank"
+                                    rel="noopener noreferrer" aria-label="GitHub Repository"><i
+                                        class="ph ph-github-logo"></i></a>
+                                <a href="https://github.com/jonathanau/neovim-config" target="_blank"
+                                    rel="noopener noreferrer" aria-label="External Link"><i
+                                        class="ph ph-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">
+                            <a href="https://github.com/jonathanau/neovim-config" target="_blank"
+                                rel="noopener noreferrer">Neovim Configuration</a>
+                        </h3>
+                        <p class="project-description">
+                            A modern, Lua-based Neovim setup with a lineage tracing back to my vimrc from 2005. Built around
+                            lazy.nvim for plugin management, Mason for automatic LSP installation, Telescope for fuzzy
+                            finding, and Treesitter for syntax highlighting. Includes a Ghostty integration that wraps
+                            Neovim as a native macOS app, launchable directly from Spotlight.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Lua</li>
+                            <li>Neovim</li>
+                            <li>LSP</li>
+                            <li>lazy.nvim</li>
                         </ul>
                     </div>
                 </article>
