@@ -1,0 +1,42 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "A premium, responsive personal portfolio website built with standard HTML, CSS, and vanilla JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e.spec.js",
+    "test:a11y": "playwright test tests/a11y.spec.js",
+    "test:security": "playwright test tests/security.spec.js",
+    "test:parity": "playwright test tests/parity.spec.js",
+    "test:html": "node tests/html-validate.js",
+    "test:lighthouse": "node tests/lighthouse.mjs",
+    "test:lint": "stylelint \"assets/css/**/*.css\"",
+    "test:all": "npm run test:html && npm run test:lint && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanau/personal-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jonathanau/personal-website/issues"
+  },
+  "homepage": "https://github.com/jonathanau/personal-website#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "axe-core": "^4.11.4",
+    "axe-playwright": "^2.2.2",
+    "html-validator-cli": "^7.0.1",
+    "lighthouse": "^13.3.0",
+    "lighthouse-ci": "^1.13.1",
+    "stylelint": "^17.11.0",
+    "stylelint-config-standard": "^40.0.0"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.55.1"
+  }
+}
