@@ -1038,3 +1038,4 @@ h1, h2, h3, h4, h5, h6 {
 .reveal.delay-3 { transition-delay: 300ms; }
 .reveal.delay-4 { transition-delay: 400ms; }
 .reveal.delay-5 { transition-delay: 500ms; }
+.reveal.delay-6 { transition-delay: 600ms; }
