@@ -80,6 +80,15 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Description: A modern, Lua-based Neovim setup with a lineage tracing back to my vimrc from 2005. Built around lazy.nvim for plugin management, Mason for automatic LSP installation, Telescope for fuzzy finding, and Treesitter for syntax highlighting. Includes a Ghostty integration that wraps Neovim as a native macOS app, launchable directly from Spotlight.
 - Technologies: Lua, Neovim, LSP, lazy.nvim
 
+### Global Infectious Diseases
+
+- Category: Data Visualization
+- URL: https://infectious-diseases.onrender.com/
+- Repository: https://github.com/jonathanau/global-infections
+- Description: A zero-dependency, single-page interactive infographic hub visualizing the global burden of infectious diseases. Covers 10 disease deep dives, DALY rankings, co-infection interactions, transmission routes, and seasonal patterns using data from WHO, CDC, and IHME.
+- Technologies: JavaScript, HTML5, CSS3, Data Visualization, Public Health
+
+
 ## Contact
 
 - LinkedIn: https://www.linkedin.com/in/jonathanau/
