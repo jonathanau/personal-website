@@ -1,5 +1,7 @@
 # Personal Portfolio
 
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A premium, responsive personal portfolio website built with standard HTML, CSS, and vanilla JavaScript. 
 
 Features a state-of-the-art dark mode design with glassmorphism, fluid scroll animations, and a mobile-optimized layout.
