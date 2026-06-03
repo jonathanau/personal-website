@@ -9,6 +9,7 @@ playwright/.cache/
 
 # Local tool directories
 .kilo/
+.antigravitycli/
 
 # OS generated files
 .DS_Store
