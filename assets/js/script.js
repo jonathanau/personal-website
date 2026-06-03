@@ -36,14 +36,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
     let scrollTicking = false;
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+    // Apply on load in case page is refreshed while scrolled down.
+    // The browser may restore scroll position after DOMContentLoaded,
+    // so we also re-check on window load, via requestAnimationFrame,
+    // and after brief timeouts to handle any delayed layout shifts/scroll restoration.
+    updateNavbar();
+    window.addEventListener('load', updateNavbar);
+    requestAnimationFrame(() => requestAnimationFrame(updateNavbar));
+    setTimeout(updateNavbar, 100);
+    setTimeout(updateNavbar, 300);
+    setTimeout(updateNavbar, 500);
+
     window.addEventListener('scroll', () => {
         if (!scrollTicking) {
             window.requestAnimationFrame(() => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+                updateNavbar();
                 scrollTicking = false;
             });
             scrollTicking = true;
