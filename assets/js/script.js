@@ -163,6 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (themePopover) {
                 themePopover.classList.remove('active');
             }
+
+            // Close mobile menu after selection (mobile)
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
         });
     });
 

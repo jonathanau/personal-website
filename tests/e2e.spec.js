@@ -327,6 +327,12 @@ test.describe('JavaScript Behavior', () => {
     const dataTheme = await htmlEl.getAttribute('data-theme');
     expect(dataTheme).toBe('sunset');
 
+    // Verify mobile menu closed automatically
+    await expect(page.locator('.mobile-menu')).not.toHaveClass(/active/);
+
+    // Re-open mobile menu to reset theme
+    await page.locator('.menu-toggle').click();
+
     // Reset — click cyber in the mobile menu's theme switcher
     await page.locator('.mobile-menu [data-theme="cyber"]').click();
   });
