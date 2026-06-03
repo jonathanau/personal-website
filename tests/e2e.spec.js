@@ -179,9 +179,9 @@ test.describe('CSS / Visual', () => {
   test('2.7 — all project cards have stagger delay classes', async ({ page }) => {
     const cards = page.locator('.project-card.reveal');
     const count = await cards.count();
-    expect(count).toBe(6);
+    expect(count).toBe(7);
 
-    const expectedClasses = ['', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5'];
+    const expectedClasses = ['', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5', 'delay-6'];
     for (let i = 0; i < count; i++) {
       const el = cards.nth(i);
       const cls = await el.getAttribute('class');
