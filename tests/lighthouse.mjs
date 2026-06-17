@@ -6,17 +6,6 @@ import { URL } from 'url';
 
 const BASE = 'http://localhost:8080';
 
-const config = {
-  extends: 'lighthouse:default',
-  settings: {
-    onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
-    throttling: {
-      rcpThroughput: 0,
-      cpuSlowdownMultiplier: 1,
-    },
-  },
-};
-
 async function main() {
   console.log(`Running Lighthouse against ${BASE} ...\n`);
 

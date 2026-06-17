@@ -7,7 +7,7 @@
    ========================================================================= */
 (function () {
      var saved = localStorage.getItem('theme');
-     var themeColors = {
+     window.themeColors = {
          'cyber': '#0a0a0f',
          'sunset': '#0f0b07',
          'forest': '#060d0a',
@@ -21,7 +21,7 @@
          document.documentElement.setAttribute('data-theme', saved);
          var meta = document.querySelector('meta[name="theme-color"]');
          if (meta) {
-             meta.setAttribute('content', themeColors[saved] || '#0a0a0f');
+             meta.setAttribute('content', window.themeColors[saved] || '#0a0a0f');
          }
      }
  })();

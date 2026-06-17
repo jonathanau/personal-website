@@ -43,16 +43,16 @@
 | 3.2 | **Default theme handling** | Default "cyber" theme: `data-theme` attribute is **removed** (via `removeAttribute`), not set to `"cyber"` — test must verify attribute absence |
 | 3.3 | **Theme persistence** | Set a theme → reload page → `theme-init.js` applies saved theme to `<html>` before CSS paint (no flash) |
 | 3.4 | **Theme popover toggle** | Clicking `#theme-switcher` toggles `#theme-popover` visibility (open ↔ close) |
-| 3.5 | **Escape key closes popover** | Pressing `Escape` while popover is open closes it (`script.js:107-111`) |
-| 3.6 | **Outside-click closes popover** | Clicking outside the popover closes it (`script.js:100-104`) |
-| 3.7 | **Arrow-key navigation in popover** | Arrow keys navigate between theme option buttons within the popover (`script.js:148-163`) |
+| 3.5 | **Escape key closes popover** | Pressing `Escape` while popover is open closes it (`script.js:129-133`) |
+| 3.6 | **Outside-click closes popover** | Clicking outside the popover closes it (`script.js:122-126`) |
+| 3.7 | **Arrow-key navigation in popover** | Arrow keys navigate between theme option buttons within the popover (`script.js:174-191`) |
 | 3.8 | **Mobile menu toggle** | Clicking `.menu-toggle` opens/closes `.mobile-menu` |
 | 3.9 | **Mobile menu icon swap** | Toggle icon swaps between `ph-list` (closed) ↔ `ph-x` (open) (`script.js:15-16`) |
 | 3.10 | **Mobile link auto-closes menu** | Clicking any `.mobile-link` closes the mobile menu (`script.js:28-34`) |
 | 3.11 | **Mobile menu locks body scroll** | Menu open: `document.body.style.overflow === 'hidden'`; Menu close: overflow restored (`script.js:17`) |
 | 3.12 | **Mobile theme switcher parity** | Mobile menu contains a full duplicate theme switcher that functions identically to the desktop version |
 | 3.13 | **Smooth scroll** | Nav anchor links scroll smoothly to target section (verified via `scroll-behavior: smooth` on `<html>`) |
-| 3.14 | **Navbar scroll effect** | Scrolling past 50px adds `.scrolled` class to `#navbar` (backdrop blur + background) (`script.js:38-44`) |
+| 3.14 | **Navbar scroll effect** | Scrolling past 50px adds `.scrolled` class to `#navbar` (backdrop blur + background) (`script.js:38-45`) |
 | 3.15 | **`meta[name="theme-color"]` updates** | Theme switch dynamically updates the `content` of `meta[name="theme-color"]` |
 | 3.16 | **No runtime console errors** | No `ReferenceError`, `TypeError`, or failed resource loads in browser console |
 
@@ -67,7 +67,7 @@
 | 4.3 | **CSS placement** | CSS `<link>` is in `<head>` |
 | 4.4 | **Main script at body end** | `<script src="./assets/js/script.js">` is the last element before `</body>` (no `defer` attribute — attribute must not be present) |
 | 4.5 | **Phosphor Icons in `<head>`** | `@phosphor-icons/web@2.1.2` script loads in `<head>` without `defer`/`async` |
-| 4.6 | **Image optimization** | `og-image.png` (741KB) should be compressed to < 300KB for optimal OG sharing; `favicon.png` and `profile_photo.jpg` appropriately sized |
+| 4.6 | **Image optimization** | `og-image.jpg` (741KB) should be compressed to < 300KB for optimal OG sharing; `favicon.png` and `profile_photo.jpg` appropriately sized |
 | 4.7 | **External resource origins** | Only expected external origins: `fonts.googleapis.com`, `fonts.gstatic.com`, `unpkg.com`, `cdn.jsdelivr.net`, `gc.zgo.at` |
 
 ---
@@ -137,4 +137,4 @@
 
 | Priority | Bug | Location |
 |----------|-----|----------|
-| 🟡 Minor | `og-image.png` is 741KB (recommended < 300KB) | `assets/img/og-image.png` |
+| 🟡 Minor | `og-image.jpg` is 741KB (recommended < 300KB) | `assets/img/og-image.jpg` |

@@ -92,18 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themePopover = document.getElementById('theme-popover');
     const allThemeOptions = document.querySelectorAll('.theme-option');
 
-    // Map theme names to their meta theme-color values
-    const themeColors = {
-        'cyber': '#0a0a0f',
-        'sunset': '#0f0b07',
-        'forest': '#060d0a',
-        'dusk': '#0c0a12',
-        'cyber-light': '#f0f4f8',
-        'sunset-light': '#fdf6ee',
-        'forest-light': '#f0f7f2',
-        'dusk-light': '#f3f0f9'
-    };
-
     // Initialize active state from localStorage
     const savedTheme = localStorage.getItem('theme') || 'cyber';
     allThemeOptions.forEach(opt => {
@@ -151,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // The text contrast (white vs black) is now handled by the color-scheme CSS property.
             const metaThemeColor = document.querySelector('meta[name="theme-color"]');
             if (metaThemeColor) {
-                metaThemeColor.setAttribute('content', themeColors[theme] || '#0a0a0f');
+                metaThemeColor.setAttribute('content', window.themeColors[theme] || '#0a0a0f');
             }
 
             // Sync active state across all theme option buttons (desktop + mobile)

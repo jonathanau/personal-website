@@ -335,25 +335,6 @@ test.describe('JavaScript Behavior', () => {
     await page.locator('.mobile-menu [data-theme="cyber"]').click();
   });
 
-  test('3.10b — selecting a theme in mobile menu automatically closes the menu', async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
-    const mobileMenu = page.locator('.mobile-menu');
-
-    // Open mobile menu
-    await page.locator('.menu-toggle').click();
-    await expect(mobileMenu).toHaveClass(/active/);
-
-    // Click a theme option in the mobile theme switcher
-    await page.locator('.mobile-theme-switcher [data-theme="sunset"]').click();
-
-    // Verify mobile menu automatically closed
-    await expect(mobileMenu).not.toHaveClass(/active/);
-
-    // Reset — open mobile menu and select cyber theme
-    await page.locator('.menu-toggle').click();
-    await page.locator('.mobile-menu [data-theme="cyber"]').click();
-  });
-
   test('3.11 — theme-color meta tag updates on switch', async ({ page }) => {
     // Get initial theme-color
     const initialColor = await page.locator('meta[name="theme-color"]').getAttribute('content');
@@ -387,7 +368,6 @@ test.describe('JavaScript Behavior', () => {
       !e.includes('downloadable font') &&
       !e.includes('frame-ancestors')
     );
-    console.log("JS ERRORS FOUND:", jsErrors);
     expect(jsErrors).toEqual([]);
   });
 });

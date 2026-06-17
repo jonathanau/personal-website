@@ -35,9 +35,6 @@ test.describe('llms.txt <-> index.html Parity', () => {
     // Clean up formatting of the inner text
     const cleanHtmlProjects = htmlProjects.map(t => t.replace(/\s+/g, ' ').trim());
 
-    console.log('llms.txt projects:', JSON.stringify(llmsProjects));
-    console.log('index.html projects:', JSON.stringify(cleanHtmlProjects));
-
     // Counts must match
     expect(llmsProjects.length).toBe(cleanHtmlProjects.length);
 

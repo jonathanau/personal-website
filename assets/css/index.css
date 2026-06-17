@@ -12,6 +12,7 @@
     
     /* Vibrant Accents */
     --accent-primary: #00f2fe;
+    --accent-primary-rgb: 0, 242, 254;
     --accent-secondary: #4facfe;
     --accent-tertiary: #b122e5;
     --accent-quaternary: #ff637c;
@@ -70,6 +71,7 @@
     --text-muted: #a89882;
     --border-color: rgba(255, 159, 67, 0.08);
     --accent-primary: #ff9f43;
+    --accent-primary-rgb: 255, 159, 67;
     --accent-secondary: #ee5a24;
     --accent-tertiary: #f368e0;
     --accent-quaternary: #ff6b6b;
@@ -85,6 +87,7 @@
     --text-muted: #81a88a;
     --border-color: rgba(0, 230, 118, 0.08);
     --accent-primary: #00e676;
+    --accent-primary-rgb: 0, 230, 118;
     --accent-secondary: #69f0ae;
     --accent-tertiary: #00bcd4;
     --accent-quaternary: #26a69a;
@@ -100,6 +103,7 @@
     --text-muted: #9b8ec2;
     --border-color: rgba(179, 136, 255, 0.08);
     --accent-primary: #b388ff;
+    --accent-primary-rgb: 179, 136, 255;
     --accent-secondary: #7c4dff;
     --accent-tertiary: #ff80ab;
     --accent-quaternary: #ea80fc;
@@ -123,6 +127,7 @@
     --text-muted: #64748b;
     --border-color: rgba(0, 0, 0, 0.08);
     --accent-primary: #0891b2;
+    --accent-primary-rgb: 8, 145, 178;
     --accent-secondary: #3b82f6;
     --accent-tertiary: #8b5cf6;
     --accent-quaternary: #ec4899;
@@ -138,6 +143,7 @@
     --text-muted: #92744e;
     --border-color: rgba(0, 0, 0, 0.08);
     --accent-primary: #d97706;
+    --accent-primary-rgb: 217, 119, 6;
     --accent-secondary: #dc4a14;
     --accent-tertiary: #db2777;
     --accent-quaternary: #e11d48;
@@ -153,6 +159,7 @@
     --text-muted: #5f8a6a;
     --border-color: rgba(0, 0, 0, 0.08);
     --accent-primary: #059650;
+    --accent-primary-rgb: 5, 150, 80;
     --accent-secondary: #10b981;
     --accent-tertiary: #0891b2;
     --accent-quaternary: #0d9488;
@@ -168,6 +175,7 @@
     --text-muted: #7e6daa;
     --border-color: rgba(0, 0, 0, 0.08);
     --accent-primary: #7c4dff;
+    --accent-primary-rgb: 124, 77, 255;
     --accent-secondary: #9c27b0;
     --accent-tertiary: #e91e90;
     --accent-quaternary: #f06292;
@@ -500,11 +508,11 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
     color: #000;
     border: none;
-    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 15px rgba(var(--accent-primary-rgb), 0.3);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+    box-shadow: 0 6px 20px rgba(var(--accent-primary-rgb), 0.5);
     transform: translateY(-2px);
 }
 
@@ -593,7 +601,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     color: var(--accent-primary);
-    border-color: rgba(0, 242, 254, 0.3);
+    border-color: rgba(var(--accent-primary-rgb), 0.3);
 }
 
 .menu-toggle {
@@ -688,14 +696,14 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    background: rgba(0, 242, 254, 0.1);
+    background: rgba(var(--accent-primary-rgb), 0.1);
     color: var(--accent-primary);
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(0, 242, 254, 0.2);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
 }
 
 .hero-title {
@@ -753,8 +761,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile-img:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 242, 254, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+    border-color: rgba(var(--accent-primary-rgb), 0.4);
+    box-shadow: 0 10px 30px rgba(var(--accent-primary-rgb), 0.2);
 }
 
 .about-text p {
@@ -835,7 +843,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     background: var(--accent-primary);
     border: 2px solid var(--bg-base);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.5);
     z-index: var(--z-base);
 }
 
@@ -859,10 +867,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
     font-family: var(--font-heading);
     color: var(--accent-primary);
-    background: rgba(0, 242, 254, 0.08);
+    background: rgba(var(--accent-primary-rgb), 0.08);
     padding: 0.2rem 0.75rem;
     border-radius: 20px;
-    border: 1px solid rgba(0, 242, 254, 0.15);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.15);
     white-space: nowrap;
     flex-shrink: 0;
 }

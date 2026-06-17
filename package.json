@@ -2,7 +2,6 @@
   "name": "personal-website",
   "version": "1.0.0",
   "description": "A premium, responsive personal portfolio website built with standard HTML, CSS, and vanilla JavaScript.",
-  "main": "index.js",
   "scripts": {
     "test": "playwright test",
     "test:e2e": "playwright test tests/e2e.spec.js",
@@ -21,7 +20,6 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/jonathanau/personal-website/issues"
   },
@@ -30,13 +28,11 @@
     "@axe-core/playwright": "^4.11.3",
     "axe-core": "^4.11.4",
     "axe-playwright": "^2.2.2",
+    "@playwright/test": "^1.55.1",
     "html-validator-cli": "^7.0.1",
     "lighthouse": "^13.3.0",
     "lighthouse-ci": "^1.13.1",
     "stylelint": "^17.11.0",
     "stylelint-config-standard": "^40.0.0"
-  },
-  "dependencies": {
-    "@playwright/test": "^1.55.1"
   }
 }
