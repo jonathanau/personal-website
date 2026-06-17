@@ -14,7 +14,7 @@
 | 1.4 | **Navigation links** | All `<a>` `href` values resolve to valid in-page anchors or well-formed external URLs |
 | 1.5 | **Image `alt` attributes** | Every `<img>` has a meaningful, non-empty `alt` (e.g., `"Jonathan Au Profile Photo"`) |
 | 1.6 | **Meta tags** | `description`, `author`, `theme-color`, `canonical`, `og:title`, `og:description`, `og:image`, `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` all present and non-empty |
-| 1.7 | **Structured data (JSON-LD)** | Exactly 3 `<script type="application/ld+json">` blocks parse as valid JSON with correct `@context` and `@type` (Person, ItemList, WebSite); ItemList contains 6 items |
+| 1.7 | **Structured data (JSON-LD)** | Exactly 3 `<script type="application/ld+json">` blocks parse as valid JSON with correct `@context` and `@type` (Person, ItemList, WebSite); ItemList contains 8 items |
 | 1.8 | **Heading hierarchy** | Sequence is h1 → h2 → h3 with no skipped levels; single `<h1>` per page |
 | 1.9 | **Google verification file** | `/google7dfa797769f133d5.html` is accessible and returns 200 |
 
@@ -28,7 +28,7 @@
 | 2.2 | **Theme swatch `.active`** | `.active` class is toggled on `.theme-option` buttons (not on `.theme-swatch` spans) |
 | 2.3 | **All 8 themes defined** | CSS defines styles for: `cyber`, `sunset`, `forest`, `dusk`, `cyber-light`, `sunset-light`, `forest-light`, `dusk-light` |
 | 2.4 | **Glassmorphism** | `.glass-card` elements have `backdrop-filter` / transparency applied |
-| 2.5 | **Stagger animation classes** | CSS defines `.delay-1` through `.delay-5` — all delay classes are present and correctly applied to project cards |
+| 2.5 | **Stagger animation classes** | CSS defines `.delay-1` through `.delay-7` — all delay classes are present and correctly applied to project cards |
 | 2.6 | **Responsive layout** | Page renders correctly at ≤768px (mobile), 768–1024px (tablet), >1024px (desktop) |
 | 2.7 | **Scroll animations** | Elements with `.reveal` class animate into view on scroll (Intersection Observer or equivalent) |
 | 2.8 | **Color-scheme property** | Light themes set `color-scheme: light` (affects native scrollbars, form controls) |

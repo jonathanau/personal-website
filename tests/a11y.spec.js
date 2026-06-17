@@ -3,9 +3,16 @@ import { AxeBuilder } from '@axe-core/playwright';
 
 const BASE = 'http://localhost:8080';
 
+test.use({ bypassCSP: true });
+
 test.describe('Accessibility', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(BASE, { waitUntil: 'domcontentloaded' });
+    await page.goto(BASE, { waitUntil: 'load' });
+    // Disable animations and transitions so accessibility color contrast audits evaluate final settled states
+    await page.addStyleTag({
+      content: '* { transition: none !important; animation: none !important; transition-delay: 0s !important; }'
+    });
+    await page.waitForTimeout(500);
   });
 
   test('should not have any automatically detectable accessibility issues', async ({ page }) => {
