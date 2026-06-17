@@ -88,6 +88,12 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Description: A zero-dependency, single-page interactive infographic hub visualizing the global burden of infectious diseases. Covers 10 disease deep dives, DALY rankings, co-infection interactions, transmission routes, and seasonal patterns using data from WHO, CDC, and IHME.
 - Technologies: JavaScript, HTML5, CSS3, Data Visualization, Public Health
 
+### AIP-C01 Study Guide
+- Category: AWS Certification
+- URL: https://exam-prep-aws.onrender.com/
+- Description: A zero-dependency, single-page interactive study guide for the AWS Certified Generative AI Developer – Professional (AIP-C01) exam. Features domain weighting breakdowns, readiness checklists, a four-pass study path, a domain explorer, an original blueprint-aligned practice question bank, and a curated reference map of primary AWS sources.
+- Technologies: JavaScript, HTML5, CSS3, AWS
+
 
 ## Contact
 
