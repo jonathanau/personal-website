@@ -176,17 +176,46 @@ test.describe('CSS / Visual', () => {
     await expect(popover).not.toBeVisible();
   });
 
-  test('2.7 — all project cards have stagger delay classes', async ({ page }) => {
+  test('2.7 — project cards receive per-row stagger delays on scroll', async ({ page }) => {
+    // Set explicit desktop viewport to guarantee a 3-column layout for row-detection test assertions
+    await page.setViewportSize({ width: 1280, height: 720 });
+
     const cards = page.locator('.project-card.reveal');
     const count = await cards.count();
     expect(count).toBe(8);
 
-    const expectedClasses = ['', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5', 'delay-6', 'delay-7'];
-    for (let i = 0; i < count; i++) {
-      const el = cards.nth(i);
-      const cls = await el.getAttribute('class');
-      // Card at index i should have expectedClasses[i] (or at least not crash)
-      expect(cls).toContain('reveal');
+    // Scroll to projects section to trigger the IntersectionObserver
+    await page.locator('#projects').scrollIntoViewIfNeeded();
+
+    // Wait for the first card to be revealed (auto-retrying, no brittle timeout)
+    await expect(cards.nth(0)).toHaveClass(/active/);
+
+    // Verify first row cards have per-row staggered transition-delay (0ms, 100ms, 200ms)
+    for (let i = 0; i < 3; i++) {
+      const delay = await cards.nth(i).evaluate(el => el.style.transitionDelay);
+      expect(delay).toBe(`${i * 100}ms`);
+    }
+  });
+
+  test('2.8 — project card delays use resized layout before reveal', async ({ page }) => {
+    // Initialize the page in a desktop layout, then resize before projects are revealed.
+    // This catches stale row data from implementations that cache layout at load time.
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.reload({ waitUntil: 'domcontentloaded' });
+
+    await page.setViewportSize({ width: 390, height: 2000 });
+
+    const cards = page.locator('.project-card.reveal');
+    expect(await cards.count()).toBe(8);
+
+    await page.evaluate(() => {
+      document.querySelector('#projects').scrollIntoView();
+    });
+
+    for (let i = 0; i < 3; i++) {
+      await expect(cards.nth(i)).toHaveClass(/active/);
+      const delay = await cards.nth(i).evaluate(el => el.style.transitionDelay);
+      expect(delay).toBe('0ms');
     }
   });
 });

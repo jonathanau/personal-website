@@ -76,9 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Optional: Stop observing once revealed
-                // observer.unobserve(entry.target);
+                const el = entry.target;
+                // Apply per-row stagger delay for project cards dynamically at the moment of intersection.
+                // This eliminates the need for caching or resize listeners.
+                if (el.classList.contains('project-card')) {
+                    const cards = Array.from(document.querySelectorAll('.project-card.reveal'));
+                    const TOLERANCE = 5; // px — accounts for sub-pixel rendering differences
+                    const sameRowCards = cards.filter(card => Math.abs(card.offsetTop - el.offsetTop) <= TOLERANCE);
+                    const idx = sameRowCards.indexOf(el);
+                    el.style.transitionDelay = `${idx * 100}ms`;
+                }
+                el.classList.add('active');
+                observer.unobserve(entry.target);
             }
         });
     }, revealConfig);

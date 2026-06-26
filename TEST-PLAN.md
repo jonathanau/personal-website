@@ -28,7 +28,7 @@
 | 2.2 | **Theme swatch `.active`** | `.active` class is toggled on `.theme-option` buttons (not on `.theme-swatch` spans) |
 | 2.3 | **All 8 themes defined** | CSS defines styles for: `cyber`, `sunset`, `forest`, `dusk`, `cyber-light`, `sunset-light`, `forest-light`, `dusk-light` |
 | 2.4 | **Glassmorphism** | `.glass-card` elements have `backdrop-filter` / transparency applied |
-| 2.5 | **Stagger animation classes** | CSS defines `.delay-1` through `.delay-7` — all delay classes are present and correctly applied to project cards |
+| 2.5 | **Stagger animation delays** | Project cards receive per-row `transitionDelay` inline styles at runtime (computed from grid layout); no hardcoded `.delay-*` CSS classes |
 | 2.6 | **Responsive layout** | Page renders correctly at ≤768px (mobile), 768–1024px (tablet), >1024px (desktop) |
 | 2.7 | **Scroll animations** | Elements with `.reveal` class animate into view on scroll (Intersection Observer or equivalent) |
 | 2.8 | **Color-scheme property** | Light themes set `color-scheme: light` (affects native scrollbars, form controls) |
