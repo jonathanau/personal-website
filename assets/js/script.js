@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allThemeOptions = document.querySelectorAll('.theme-option');
 
     // Initialize active state from localStorage
-    const savedTheme = localStorage.getItem('theme') || 'cyber';
+    const savedTheme = localStorage.getItem('theme') || 'cyber-light';
     allThemeOptions.forEach(opt => {
         opt.classList.toggle('active', opt.dataset.theme === savedTheme);
     });
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const theme = option.dataset.theme;
 
             // Apply theme
-            if (theme === 'cyber') {
+            if (theme === 'cyber-light') {
                 document.documentElement.removeAttribute('data-theme');
             } else {
                 document.documentElement.setAttribute('data-theme', theme);
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // The text contrast (white vs black) is now handled by the color-scheme CSS property.
             const metaThemeColor = document.querySelector('meta[name="theme-color"]');
             if (metaThemeColor) {
-                metaThemeColor.setAttribute('content', window.themeColors[theme] || '#0a0a0f');
+                metaThemeColor.setAttribute('content', window.themeColors[theme] || '#f0f4f8');
             }
 
             // Sync active state across all theme option buttons (desktop + mobile)

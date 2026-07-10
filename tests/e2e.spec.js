@@ -1,15 +1,7 @@
 import { test, expect } from '@playwright/test';
 import http from 'http';
 
-/* ── Helpers ─────────────────────────────────────────── */
 
-function waitForPageLoad(page) {
-  return page.waitForLoadState('domcontentloaded');
-}
-
-function isVisible(locator) {
-  return locator.isVisible({ timeout: 5000 });
-}
 
 /* ── Shared fixtures ─────────────────────────────────── */
 
@@ -108,21 +100,21 @@ test.describe('CSS / Visual', () => {
     const dataTheme = await htmlEl.getAttribute('data-theme');
     expect(dataTheme).toBe('sunset');
 
-    // Re-open popover and reset to cyber (default)
+    // Re-open popover and reset to cyber-light (default)
     await themeSwitcher.click();
-    const cyberBtn = page.locator('#theme-popover [data-theme="cyber"]');
+    const cyberLightBtn = page.locator('#theme-popover [data-theme="cyber-light"]');
     // Wait for popover to be stable
     const popover = page.locator('#theme-popover');
     await expect(popover).toBeVisible();
-    await cyberBtn.click();
+    await cyberLightBtn.click();
 
-    // Verify data-theme is now absent (default cyber theme)
+    // Verify data-theme is now absent (default cyber-light theme)
     const hasDataTheme = await htmlEl.evaluate((el) => el.hasAttribute('data-theme'));
     expect(hasDataTheme).toBeFalsy();
   });
 
   test('2.2 — default theme removes data-theme attribute', async ({ page }) => {
-    // Default should be cyber — data-theme should NOT be present
+    // Default should be cyber-light — data-theme should NOT be present
     const htmlEl = page.locator('html');
     const hasDataTheme = await htmlEl.evaluate((el) => el.hasAttribute('data-theme'));
     expect(hasDataTheme).toBeFalsy();
@@ -137,18 +129,18 @@ test.describe('CSS / Visual', () => {
     const dataTheme = await htmlEl.getAttribute('data-theme');
     expect(dataTheme).toBe('sunset');
 
-    // Reset to default cyber
+    // Reset to default cyber-light
     await page.locator('#theme-switcher').click();
-    await page.locator('#theme-popover [data-theme="cyber"]').click();
+    await page.locator('#theme-popover [data-theme="cyber-light"]').click();
   });
 
-  test('2.4 — clicking cyber theme removes data-theme', async ({ page }) => {
+  test('2.4 — clicking cyber-light theme removes data-theme', async ({ page }) => {
     // First set to something else
     await page.locator('#theme-switcher').click();
     await page.locator('#theme-popover [data-theme="sunset"]').click();
-    // Then click cyber default
+    // Then click cyber-light default
     await page.locator('#theme-switcher').click();
-    await page.locator('#theme-popover [data-theme="cyber"]').click();
+    await page.locator('#theme-popover [data-theme="cyber-light"]').click();
 
     const htmlEl = page.locator('html');
     const hasDataTheme = await htmlEl.evaluate((el) => el.hasAttribute('data-theme'));
@@ -361,7 +353,7 @@ test.describe('JavaScript Behavior', () => {
 
     // Re-open mobile menu to reset theme
     await page.locator('.menu-toggle').click();
-    await page.locator('.mobile-menu [data-theme="cyber"]').click();
+    await page.locator('.mobile-menu [data-theme="cyber-light"]').click();
   });
 
   test('3.11 — theme-color meta tag updates on switch', async ({ page }) => {
