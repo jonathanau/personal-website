@@ -11,7 +11,8 @@
     "test:html": "node tests/html-validate.js",
     "test:lighthouse": "node tests/lighthouse.mjs",
     "test:lint": "stylelint \"assets/css/**/*.css\"",
-    "test:all": "npm run test:html && npm run test:lint && npm run test"
+    "test:all": "npm run test:html && npm run test:lint && npm run test",
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,9 @@
   "homepage": "https://github.com/jonathanau/personal-website#readme",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.55.1",
     "axe-core": "^4.11.4",
     "axe-playwright": "^2.2.2",
-    "@playwright/test": "^1.55.1",
     "html-validator-cli": "^7.0.1",
     "lighthouse": "^13.3.0",
     "lighthouse-ci": "^1.13.1",

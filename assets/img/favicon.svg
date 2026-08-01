@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="5" fill="#f0f4f8"/>
+  <text x="16" y="22.5" text-anchor="middle"
+        font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-weight="800" font-size="17">
+    <tspan fill="#1a202c">JA</tspan><tspan fill="#075985">.</tspan>
+  </text>
+</svg>
