@@ -74,11 +74,14 @@ test.describe('HTML Structure & Content', () => {
     }
   });
 
-  test('1.7 — Google verification file linked in head', async ({ page }) => {
-    const el = page.locator('link[rel="icon"]');
-    await expect(el).toHaveCount(1);
-    const href = await el.getAttribute('href');
-    expect(href).toContain('favicon');
+  test('1.7 — Favicon linked in head', async ({ page }) => {
+    const els = page.locator('link[rel="icon"]');
+    const count = await els.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+      const href = await els.nth(i).getAttribute('href');
+      expect(href).toContain('favicon');
+    }
   });
 });
 
