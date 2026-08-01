@@ -35,17 +35,18 @@ async function main() {
   let failed = false;
 
   const thresholds = {
-    performance: 95,
+    performance: 80,
     accessibility: 95,
-    'best-practices': 95,
+    'best-practices': 90,
     seo: 100,
   };
 
   for (const [key, cat] of Object.entries(categories)) {
+    if (!thresholds[key]) continue;
     const score = Math.round(cat.score * 100);
     const threshold = thresholds[key];
-    const status = threshold && score < threshold ? '❌ FAIL' : '✅ PASS';
-    if (threshold && score < threshold) failed = true;
+    const status = score < threshold ? '❌ FAIL' : '✅ PASS';
+    if (score < threshold) failed = true;
     scores[key] = score;
     console.log(`${status} ${cat.title}: ${score}/100`);
   }

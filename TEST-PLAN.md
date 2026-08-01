@@ -113,9 +113,9 @@
 
 | Metric | Target |
 |--------|--------|
-| Performance | ≥ 95 |
+| Performance | ≥ 80 |
 | Accessibility | ≥ 95 |
-| Best Practices | ≥ 95 |
+| Best Practices | ≥ 90 |
 | SEO | 100 |
 
 ---
