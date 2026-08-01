@@ -1,6 +1,7 @@
 # Personal Portfolio
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/jonathanau/personal-website/actions/workflows/ci.yml/badge.svg)](https://github.com/jonathanau/personal-website/actions/workflows/ci.yml)
 
 A premium, responsive personal portfolio website built with standard HTML, CSS, and vanilla JavaScript. 
 
