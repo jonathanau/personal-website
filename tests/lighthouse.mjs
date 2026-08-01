@@ -1,21 +1,34 @@
-// ── Lighthouse CI Runner (local) ────────────────────────
-// Runs Lighthouse against the local server and checks thresholds
+// ── Lighthouse CI Runner ────────────────────────────────
+// Launches a headless Chrome on the CDP port, runs Lighthouse
+// against the local server, and checks thresholds.
 
 import lighthouse from 'lighthouse';
+import { launch } from 'chrome-launcher';
 import { URL } from 'url';
 
 const BASE = 'http://localhost:8080';
+const PORT = 9222;
 
 async function main() {
   console.log(`Running Lighthouse against ${BASE} ...\n`);
 
-  const runnerResult = await lighthouse(BASE, {
-    extends: 'lighthouse:default',
-    settings: {
-      onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
-      throttling: { rcpThroughput: 0, cpuSlowdownMultiplier: 1 },
-    },
+  const chrome = await launch({
+    port: PORT,
+    chromeFlags: ['--headless', '--disable-gpu', '--no-sandbox'],
   });
+
+  let runnerResult;
+  try {
+    runnerResult = await lighthouse(BASE, {
+      extends: 'lighthouse:default',
+      settings: {
+        onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+        throttling: { rcpThroughput: 0, cpuSlowdownMultiplier: 1 },
+      },
+    });
+  } finally {
+    await chrome.kill();
+  }
 
   const categories = runnerResult.lhr.categories;
   const scores = {};
