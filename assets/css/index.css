@@ -74,6 +74,7 @@
 [data-theme="forest"],
 [data-theme="dusk"] {
     color-scheme: dark;
+
     --tag-bg: rgba(255, 255, 255, 0.05);
     --tag-hover-bg: rgba(255, 255, 255, 0.1);
     --btn-secondary-hover-bg: rgba(255, 255, 255, 0.05);
@@ -153,6 +154,7 @@
 
 [data-theme$="-light"] {
     color-scheme: light;
+
     --tag-bg: rgba(0, 0, 0, 0.04);
     --tag-hover-bg: rgba(0, 0, 0, 0.08);
     --btn-secondary-hover-bg: rgba(0, 0, 0, 0.04);
