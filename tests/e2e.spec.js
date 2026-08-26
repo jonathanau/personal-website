@@ -34,7 +34,7 @@ test.describe('HTML Structure & Content', () => {
     // about, experience, projects
     const sectionCount = await page.locator('section').count();
     expect(sectionCount).toBeGreaterThanOrEqual(3);
-    // 8 project cards
+    // project cards
     const articleCount = await page.locator('article').count();
     expect(articleCount).toBeGreaterThanOrEqual(8);
   });
@@ -177,7 +177,7 @@ test.describe('CSS / Visual', () => {
 
     const cards = page.locator('.project-card.reveal');
     const count = await cards.count();
-    expect(count).toBe(8);
+    expect(count).toBe(9);
 
     // Scroll to projects section to trigger the IntersectionObserver
     await page.locator('#projects').scrollIntoViewIfNeeded();
@@ -201,7 +201,7 @@ test.describe('CSS / Visual', () => {
     await page.setViewportSize({ width: 390, height: 2000 });
 
     const cards = page.locator('.project-card.reveal');
-    expect(await cards.count()).toBe(8);
+    expect(await cards.count()).toBe(9);
 
     await page.evaluate(() => {
       document.querySelector('#projects').scrollIntoView();

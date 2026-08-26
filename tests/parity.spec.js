@@ -51,11 +51,11 @@ test.describe('llms.txt <-> index.html Parity', () => {
     }
   });
 
-  test('llms.txt lists exactly 8 projects', () => {
+  test('llms.txt lists exactly 9 projects', () => {
     const selectedProjectsStart = llmsContent.indexOf('## Selected Projects');
     const afterSelected = llmsContent.substring(selectedProjectsStart);
     const projectMatches = afterSelected.match(/^### (.+)$/gm) || [];
-    expect(projectMatches.length).toBe(8);
+    expect(projectMatches.length).toBe(9);
   });
 
   test('sitemap.xml is referenced in robots.txt', async ({ request }) => {
