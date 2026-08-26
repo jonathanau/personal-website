@@ -1,11 +1,18 @@
 import { test, expect } from '@playwright/test';
 import http from 'http';
-
-
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 /* ── Shared fixtures ─────────────────────────────────── */
 
 const BASE = 'http://localhost:8080';
+
+// Expected project count derives from authored content files, so adding a
+// project .md doesn't require touching these specs.
+// NOTE: no import.meta here - Playwright treats such specs as ESM and breaks.
+const PROJECT_COUNT = readdirSync(join(process.cwd(), 'content', 'projects'))
+  .filter((f) => f.endsWith('.md'))
+  .length;
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -177,7 +184,7 @@ test.describe('CSS / Visual', () => {
 
     const cards = page.locator('.project-card.reveal');
     const count = await cards.count();
-    expect(count).toBe(9);
+    expect(count).toBe(PROJECT_COUNT);
 
     // Scroll to projects section to trigger the IntersectionObserver
     await page.locator('#projects').scrollIntoViewIfNeeded();
@@ -201,7 +208,7 @@ test.describe('CSS / Visual', () => {
     await page.setViewportSize({ width: 390, height: 2000 });
 
     const cards = page.locator('.project-card.reveal');
-    expect(await cards.count()).toBe(9);
+    expect(await cards.count()).toBe(PROJECT_COUNT);
 
     await page.evaluate(() => {
       document.querySelector('#projects').scrollIntoView();
@@ -476,5 +483,57 @@ test.describe('Structured Data', () => {
     expect(itemListData).not.toBeNull();
     expect(itemListData.itemListElement.length).toBeGreaterThanOrEqual(8);
     expect(itemListData.itemListElement[0]['@type']).toBe('ListItem');
+  });
+
+  test('5.5 — ItemList entries are complete, sequential, and https-only', async ({ page }) => {
+    const scripts = page.locator('script[type="application/ld+json"]');
+    let itemListData = null;
+
+    for (let i = 0; i < await scripts.count(); i++) {
+      const data = JSON.parse(await scripts.nth(i).textContent());
+      if (data['@type'] === 'ItemList') {
+        itemListData = data;
+        break;
+      }
+    }
+
+    expect(itemListData).not.toBeNull();
+    const validCategories = new Set([
+      'DeveloperApplication',
+      'GameApplication',
+      'EducationalApplication',
+    ]);
+
+    itemListData.itemListElement.forEach((entry, index) => {
+      const label = `ItemList entry ${index}`;
+      expect(entry['@type'], label).toBe('ListItem');
+      expect(entry.position, `${label} position`).toBe(index + 1);
+
+      const item = entry.item;
+      expect(item['@type'], label).toBe('SoftwareApplication');
+      expect(item.name?.trim().length, `${label} name`).toBeGreaterThan(0);
+      expect(item.description?.trim().length, `${label} description`).toBeGreaterThan(0);
+      expect(validCategories.has(item.applicationCategory), `${label} category`).toBe(true);
+      expect(item.url || item.codeRepository, `${label} needs url or codeRepository`).toBeTruthy();
+
+      for (const url of [item.url, item.codeRepository].filter(Boolean)) {
+        expect(url.startsWith('https://'), `${label}: ${url} must be https`).toBe(true);
+      }
+    });
+  });
+
+  test('5.6 — ItemList count matches authored content files', async ({ page }) => {
+    const scripts = page.locator('script[type="application/ld+json"]');
+    let itemListData = null;
+
+    for (let i = 0; i < await scripts.count(); i++) {
+      const data = JSON.parse(await scripts.nth(i).textContent());
+      if (data['@type'] === 'ItemList') {
+        itemListData = data;
+        break;
+      }
+    }
+
+    expect(itemListData.itemListElement.length).toBe(PROJECT_COUNT);
   });
 });

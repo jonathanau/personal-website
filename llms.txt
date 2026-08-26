@@ -4,11 +4,11 @@
 
 ## About
 
-Jonathan Au has spent two decades transforming complex technical problems into products people enjoy. From designing touch-responsive animations for Microsoft's first tablet OS to turning living rooms into multiplayer arcades with nothing but a TV and a few phones, the thread through his career is making sophisticated technology feel simple for customers.
+I've spent two decades transforming complex technical problems into products people enjoy. From designing touch-responsive animations for Microsoft's first tablet OS to turning living rooms into multiplayer arcades with nothing but a TV and a few phones, the thread through my career is making sophisticated technology feel simple for customers.
 
-At Amazon, he creates gaming experiences that are fun, engaging, and effortless to dive into, removing the barriers that keep people from playing together. Before that, he owned personalization and engagement for Prime Gaming, shipping recommendation engines and A/B-tested features that measurably moved retention and conversion.
+At Amazon, I create gaming experiences that are fun, engaging, and effortless to dive into, removing the barriers that keep people from playing together. Before that, I owned personalization and engagement for Prime Gaming, shipping recommendation engines and A/B-tested features that measurably moved retention and conversion.
 
-He is currently investing in applied AI/ML, with recent certifications in deep learning, RAG, and generative AI from Stanford, DeepLearning.AI, and AWS.
+I'm currently investing in applied AI/ML, with recent certifications in deep learning, RAG, and generative AI from Stanford, DeepLearning.AI, and AWS.
 
 ### Skills
 
@@ -42,22 +42,15 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 
 ## Selected Projects
 
-### Lumenyl AI Search Intelligence
-- Category: AI Search Intelligence
-- URL: https://lumenyl.vercel.app/
-- Repository: https://github.com/jonathanau/ai-search-optimizer
-- Description: A dependency-free Node.js web app for benchmarking a website's readiness for frontier AI answer engines. Lumenyl evaluates whether systems such as ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Microsoft Copilot can discover, understand, trust, extract, and cite a page.
-- Technologies: Node.js, GEO / AEO, Schema.org, AI Readiness
-
 ### Two-Tower Video Recommender
 - Category: Machine Learning / AI
-- URL: https://github.com/jonathanau/two-tower-video-recsys
+- Repository: https://github.com/jonathanau/two-tower-video-recsys
 - Description: A minimalist, research-oriented PyTorch implementation of a two-tower retrieval model for video recommendations. Features sequential user modeling via Transformer encoders, MovieLens genre embeddings, and ANN retrieval using HNSW for fast top-k recommendation.
 - Technologies: PyTorch, Transformers, HNSW, MovieLens
 
 ### PM Project Brain
 - Category: AI Productivity Tools
-- URL: https://github.com/jonathanau/pm-project-brain
+- Repository: https://github.com/jonathanau/pm-project-brain
 - Description: An open-source, reusable prompt framework that helps product managers establish a persistent "project brain" for AI coding assistants. Streamlines context loading across tools like Claude, Copilot, Cursor, and Antigravity.
 - Technologies: Prompt Engineering, Product Strategy, Developer Setup
 
@@ -74,6 +67,13 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Description: A minimal, distraction-free Markdown editor built for the kinds of writing that feed AI systems: system prompts, agent instructions, RAG source documents, and project context files. Runs entirely in the browser with no server or account required, and documents persist locally via IndexedDB. Features a CodeMirror 6 split-pane editor, 8 color themes, multi-document management, and export to .md or rendered HTML.
 - Technologies: Markdown, JavaScript, CodeMirror 6, IndexedDB, Vite
 
+### Lumenyl AI Search Intelligence
+- Category: AI Search Intelligence
+- URL: https://lumenyl.vercel.app/
+- Repository: https://github.com/jonathanau/ai-search-optimizer
+- Description: A dependency-free Node.js web app for benchmarking whether ChatGPT, Claude, Perplexity, Gemini / Google AI Overviews, and Copilot can discover, understand, trust, extract, and cite a web page. Produces scored GEO/AEO readiness reports across crawler access, answer quality, structured data, retrieval performance, authority, and emerging AI standards.
+- Technologies: Node.js, GEO / AEO, Schema.org, AI Readiness
+
 ### Neovim Configuration
 - Category: Dev Environment
 - Repository: https://github.com/jonathanau/neovim-config
@@ -81,7 +81,6 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Technologies: Lua, Neovim, LSP, lazy.nvim
 
 ### Global Infectious Diseases
-
 - Category: Data Visualization
 - URL: https://infectious-diseases.onrender.com/
 - Repository: https://github.com/jonathanau/global-infections
@@ -98,9 +97,8 @@ He is currently investing in applied AI/ML, with recent certifications in deep l
 - Category: Open Source Template
 - URL: https://ux-portfolio-template.onrender.com/
 - Repository: https://github.com/jonathanau/ux-portfolio-template
-- Description: An open-source, editorial-minimal portfolio template that helps UX/product designers showcase their work online. Built with Astro for fully static output with zero client JS by default, light/dark mode, and case studies authored as markdown with automatic filtering, an impact-metrics band, and prev/next navigation.
+- Description: An open-source, editorial-minimal portfolio template that helps UX/product designers showcase their work. Built with Astro for fully static output with zero client JS by default, light/dark mode, and case studies authored as markdown with automatic filtering, an impact-metrics band, and prev/next navigation.
 - Technologies: Astro, MDX, Vitest, TypeScript
-
 
 ## Contact
 

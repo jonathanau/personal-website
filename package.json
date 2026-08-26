@@ -11,7 +11,10 @@
     "test:html": "node tests/html-validate.js",
     "test:lighthouse": "node tests/lighthouse.mjs",
     "test:lint": "stylelint \"assets/css/**/*.css\"",
-    "test:all": "npm run test:html && npm run test:lint && npm run test",
+    "content": "node scripts/build-content.mjs",
+    "content:check": "node scripts/build-content.mjs --check",
+    "content:test": "node tests/content-validate.mjs",
+    "test:all": "npm run content:test && npm run content:check && npm run test:html && npm run test:lint && npm run test",
     "generate-icons": "node scripts/generate-icons.js"
   },
   "repository": {

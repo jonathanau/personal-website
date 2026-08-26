@@ -1,6 +1,33 @@
 import { test, expect } from '@playwright/test';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const BASE = 'http://localhost:8080';
+
+// Expected project count derives from authored content files.
+// NOTE: no import.meta here - Playwright treats such specs as ESM and breaks.
+const PROJECT_COUNT = readdirSync(join(process.cwd(), 'content', 'projects'))
+  .filter((f) => f.endsWith('.md'))
+  .length;
+
+const normalize = (text) => text.replace(/\s+/g, ' ').trim();
+
+/** Split llms.txt's "## Selected Projects" region into {title: sectionLines}. */
+function llmsProjectSections(llmsContent) {
+  const start = llmsContent.indexOf('## Selected Projects');
+  const afterSelected = llmsContent.substring(start);
+  const sections = {};
+  for (const chunk of afterSelected.split(/^### /m).slice(1)) {
+    const [titleLine, ...lines] = chunk.split('\n');
+    sections[normalize(titleLine)] = lines.map((l) => l.trim()).filter(Boolean);
+  }
+  return sections;
+}
+
+function fieldFromSection(lines, field) {
+  const line = lines.find((l) => l.startsWith(`- ${field}: `));
+  return line ? normalize(line.slice(field.length + 3)) : null;
+}
 
 test.describe('llms.txt <-> index.html Parity', () => {
   let llmsContent;
@@ -23,39 +50,39 @@ test.describe('llms.txt <-> index.html Parity', () => {
     expect(llmsContent).toContain('Jonathan Au');
   });
 
-  test('llms.txt projects match projects in index.html', async () => {
-    // Only count ### lines that appear AFTER "## Selected Projects"
-    const selectedProjectsStart = llmsContent.indexOf('## Selected Projects');
-    const afterSelected = llmsContent.substring(selectedProjectsStart);
-    const llmsProjectMatches = afterSelected.match(/^### (.+)$/gm) || [];
-    const llmsProjects = llmsProjectMatches.map(m => m.replace('### ', '').trim());
+  test('project titles match exactly between llms.txt and index.html', async () => {
+    const llmsProjects = Object.keys(llmsProjectSections(llmsContent));
+    const htmlProjects = (await page.locator('h3.project-title').allInnerTexts()).map(normalize);
 
-    // Extract project titles directly using Playwright locator
-    const htmlProjects = await page.locator('h3.project-title').allInnerTexts();
-    // Clean up formatting of the inner text
-    const cleanHtmlProjects = htmlProjects.map(t => t.replace(/\s+/g, ' ').trim());
+    // Counts must match each other and the number of authored content files
+    expect(llmsProjects.length).toBe(PROJECT_COUNT);
+    expect(htmlProjects.length).toBe(PROJECT_COUNT);
 
-    // Counts must match
-    expect(llmsProjects.length).toBe(cleanHtmlProjects.length);
+    // Exact set equality (order is unified: card order == llms.txt order)
+    expect(llmsProjects).toEqual(htmlProjects);
+  });
 
-    // Every project in llms.txt should exist in index.html
-    for (const project of llmsProjects) {
-      const found = cleanHtmlProjects.some(p => p.toLowerCase().includes(project.toLowerCase()) || project.toLowerCase().includes(p.toLowerCase()));
-      expect(found).toBeTruthy();
+  test('project technologies match between llms.txt and index.html', async () => {
+    const sections = llmsProjectSections(llmsContent);
+
+    const htmlTechByTitle = {};
+    const cards = await page.locator('article.project-card').all();
+    for (const card of cards) {
+      const title = normalize(await card.locator('h3.project-title').innerText());
+      const tech = await card.locator('.project-tech li').allInnerTexts();
+      htmlTechByTitle[title] = tech.map(normalize).join(', ');
     }
 
-    // Every project in index.html should exist in llms.txt
-    for (const project of cleanHtmlProjects) {
-      const found = llmsProjects.some(p => p.toLowerCase().includes(project.toLowerCase()) || project.toLowerCase().includes(p.toLowerCase()));
-      expect(found).toBeTruthy();
+    for (const [title, lines] of Object.entries(sections)) {
+      const llmsTech = fieldFromSection(lines, 'Technologies');
+      expect(llmsTech, `${title} has Technologies in llms.txt`).not.toBeNull();
+      expect(htmlTechByTitle[title], `${title} exists in index.html`).toBeDefined();
+      expect(llmsTech, `${title} technologies`).toBe(htmlTechByTitle[title]);
     }
   });
 
-  test('llms.txt lists exactly 9 projects', () => {
-    const selectedProjectsStart = llmsContent.indexOf('## Selected Projects');
-    const afterSelected = llmsContent.substring(selectedProjectsStart);
-    const projectMatches = afterSelected.match(/^### (.+)$/gm) || [];
-    expect(projectMatches.length).toBe(9);
+  test('llms.txt project count matches authored content files', () => {
+    expect(Object.keys(llmsProjectSections(llmsContent)).length).toBe(PROJECT_COUNT);
   });
 
   test('sitemap.xml is referenced in robots.txt', async ({ request }) => {
